@@ -2,6 +2,7 @@
 
 # Team Members
 - <b>Adnan Saab</b>
+- <b>Justin Latella</b> (kknicekewl)
 # Objective
 Develop a social networking website.
 # Project Description
