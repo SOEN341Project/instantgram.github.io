@@ -19,3 +19,8 @@
 - <b>React.js</b> (JavaScript Library)
 - <b>SASS</b> (Syntactically Awesome Style Sheets - Preprocessor Scripting Language)
 - <b>Styled-Components</b> (Library for React.js)
+
+<b>Back-End:</b>
+- <b>Node.js</b>
+- <b>Express.js (Framework for Node.js)</b>
+- <b>MySQL database</b>
