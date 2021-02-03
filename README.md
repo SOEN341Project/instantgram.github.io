@@ -2,6 +2,7 @@
 
 # Team Members
 - <b>Adnan Saab</b>
+- <b>Bozhidar Leshev</b>
 # Objective
 
 # Project Description
