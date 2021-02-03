@@ -4,6 +4,7 @@
 - <b>Antonio Crispino</b> (antonio-crispino)
 - <b>Adnan Saab</b> (adnan-saab)
 - <b>Justin Latella</b> (kknicekewl)
+- <b>Zain Khan</b> (Zain-MKhan)
 # Objective
 Develop a social networking website.
 # Project Description
