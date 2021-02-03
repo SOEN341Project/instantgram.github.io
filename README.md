@@ -5,7 +5,9 @@
 # Objective
 Develop a social networking website.
 # Project Description
+Meeting and interacting with people is often very difficult due to the harsh time constraints present in modern society. This website allows users to efficiently meet and interact in the visual medium through pictures. Similarly-minded individuals can enrich their journey through life by the action of “following a user’s profile”, which allows to view each other’s profiles and discover others and their interests. Users can also post pictures with description and show appreciation of different life styles by leaving comments on other users’ pictures.  
 
+This project will thus link people together despite the distances that separate them.  
 # Core Features
 - <b>Posting a picture</b> (with a text description)
 - <b>Following a user</b>
