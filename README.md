@@ -1,6 +1,7 @@
 ## **instantgram.github.io**
 
 # Team Members
+- <b>Antonio Crispino</b> (antonio-crispino)
 
 # Objective
 
