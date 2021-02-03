@@ -12,7 +12,7 @@
 <b>Front-End:</b>
 - <b>HTML5</b>
 - <b>CSS3</b>
-- <b>JavaScript</b>
-- <b>React.js</b>
-- <b>SASS</b>
-- <b>Styled-Components</b>
+- <b>JavaScript</b> (ES6)
+- <b>React.js</b> (JavaScript Library)
+- <b>SASS</b> (Syntactically Awesome Style Sheets - Preprocessor Scripting Language)
+- <b>Styled-Components</b> (Library for React.js)
