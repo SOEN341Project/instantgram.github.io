@@ -1,7 +1,7 @@
 ## **instantgram.github.io**
 
 # Team Members
-
+- <b>Adnan Saab</b>
 # Objective
 
 # Project Description
