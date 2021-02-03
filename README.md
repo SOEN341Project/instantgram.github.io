@@ -3,6 +3,7 @@
 # Team Members
 - <b>Antonio Crispino</b> (antonio-crispino)
 - <b>Adnan Saab</b>
+- <b>Justin Latella</b> (kknicekewl)
 # Objective
 Develop a social networking website.
 # Project Description
