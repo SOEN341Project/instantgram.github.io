@@ -1,10 +1,12 @@
-# Insta-like
-Develop an Instagram-like website/app
+## **instantgram.github.io**
 
-Test branch feature/bozhidar-be 
+# Team Members
 
-Test branch feature/adnan-be
+# Objective
 
-Test branch feature/Justin-be
+# Project Description
 
-Soon I shall add a guide to creating your own branches.
+# Core Features
+
+# Languages and Techniques
+
