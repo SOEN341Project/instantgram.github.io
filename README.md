@@ -3,7 +3,7 @@
 # Team Members
 - <b>Adnan Saab</b>
 # Objective
-Develop a social networking website.
+
 # Project Description
 
 # Core Features
