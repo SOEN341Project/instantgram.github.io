@@ -5,6 +5,8 @@
 - <b>Adnan Saab</b> (adnan-saab)
 - <b>Justin Latella</b> (kknicekewl)
 - <b>Zain Khan</b> (Zain-MKhan)
+- <b>Bozhidar Leshev</b>
+
 # Objective
 Develop a social networking website.
 # Project Description
