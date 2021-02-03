@@ -22,5 +22,5 @@
 
 <b>Back-End:</b>
 - <b>Node.js</b>
-- <b>Express.js (Framework for Node.js)</b>
+- <b>Express.js</b> (Framework for Node.js)
 - <b>MySQL database</b>
