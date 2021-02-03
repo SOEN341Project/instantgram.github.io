@@ -23,3 +23,8 @@ This project will thus link people together despite the distances that separate 
 - <b>React.js</b> (JavaScript Library)
 - <b>SASS</b> (Syntactically Awesome Style Sheets - Preprocessor Scripting Language)
 - <b>Styled-Components</b> (Library for React.js)
+
+<b>Back-End:</b>
+- <b>Node.js</b>
+- <b>Express.js</b> (Framework for Node.js)
+- <b>MySQL database</b>
