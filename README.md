@@ -1,6 +1,7 @@
 ## **instantgram.github.io**
 
 # Team Members
+- <b>Antonio Crispino</b> (antonio-crispino)
 - <b>Adnan Saab</b>
 # Objective
 Develop a social networking website.
