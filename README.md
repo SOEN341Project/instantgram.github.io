@@ -17,6 +17,7 @@ Meeting and interacting with people is often very difficult due to the harsh tim
 - <b>Justin Latella</b> (kknicekewl)
 - <b>Zain Khan</b> (Zain-MKhan)
 - <b>Bozhidar Leshev</b> (BozhidarLeshev)
+- <b>Max Burah </b> (maxb6)
 
 ## Languages and Techniques
 ### Front-End:
