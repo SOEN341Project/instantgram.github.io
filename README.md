@@ -20,7 +20,7 @@ Meeting and interacting with people is often very difficult due to the harsh tim
 - <b>Max Burah </b> (maxb6)
 
 ### Languages and Techniques
-### Front-End:
+#### Front-End:
 - <b>HTML5</b>
 - <b>CSS3</b>
 - <b>JavaScript</b> (ES6)
