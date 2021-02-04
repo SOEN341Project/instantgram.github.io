@@ -19,7 +19,7 @@ Meeting and interacting with people is often very difficult due to the harsh tim
 - <b>Bozhidar Leshev</b> (BozhidarLeshev)
 
 ## Languages and Techniques
-<b>Front-End:</b>
+### Front-End:
 - <b>HTML5</b>
 - <b>CSS3</b>
 - <b>JavaScript</b> (ES6)
@@ -27,7 +27,7 @@ Meeting and interacting with people is often very difficult due to the harsh tim
 - <b>SASS</b> (Syntactically Awesome Style Sheets - Preprocessor Scripting Language)
 - <b>Styled-Components</b> (Library for React.js)
 
-<b>Back-End:</b>
+### Back-End:
 - <b>Node.js</b>
 - <b>Express.js</b> (Framework for Node.js)
 - <b>MySQL database</b>
