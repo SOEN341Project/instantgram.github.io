@@ -1,0 +1,38 @@
+.head {
+	background-color: white;
+	border-bottom: 1px solid rgba(219, 219, 219, 1);
+}
+
+nav {
+	display: block;
+	padding: 0 20px;
+	margin: auto;
+	height: 54px;
+	width: auto;
+	max-width: 975px;
+	background-color: transparent;
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	display: flex;
+}
+
+li {
+	align-self: center;
+}
+
+.logo {
+
+}
+
+.search {
+	flex-grow: 1;
+	padding: auto;
+}
+
+.icon {
+
+}
