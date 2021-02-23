@@ -3,25 +3,13 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var mongoose = require('mongoose');
-
-mongoose.connect('mongodb://localhost/instantgram');
-let db = mongoose.connection;
-
-//Check connection
-db.once('open', function(){
-  console.log('Connected to MongoDB');
-});
-
-//Check for DB errors
-db.on('error', function(err){
-  console.log(err);
-});
 
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var picsRouter = require('./routes/picsController');
 var loginRouter = require('./routes/login');
+
 
 var app = express();
 
@@ -37,32 +25,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/pics', picsRouter);
 
 app.use('/login', loginRouter);
+
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
-});
-
-//Add route
-app.get('/user/registration', function(req, res){
-  res.render('add_user', {
-      title:'Add User'
-  });
-});
-
-//Add User registration route
-app.post('/user/registration', function(req, res){
-  let dto = req.body;
-
-  article.save(function(err){
-    if(err){
-      console.log(err);
-      return;
-    } else {
-      res.redirect('/');
-    }
-  });
 });
 
 // error handler
