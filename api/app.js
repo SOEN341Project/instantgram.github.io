@@ -3,12 +3,28 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const mongoose = require('mongoose');
+var expressValidator = require('express-validator');
+
+mongoose.connect('mongodb://localhost/instantgram');
+let db = mongoose.connection;
+
+//check connection
+db.once('open', function(){
+  console.log('Connected to MongoDB');
+});
+
+//check database errors
+db.on('error', function(err){
+  console.log(err);
+});
 
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var picsRouter = require('./routes/picsController');
 var loginRouter = require('./routes/login');
+var users = require('./routes/users');
 
 
 var app = express();
@@ -26,7 +42,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/pics', picsRouter);
-
+app.use('/users', users);
 app.use('/login', loginRouter);
 
 
