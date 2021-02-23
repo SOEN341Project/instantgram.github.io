@@ -1,5 +1,5 @@
 
-@Service
-export default class PicsService {
 
+export default class PicsService {
+    
 }
