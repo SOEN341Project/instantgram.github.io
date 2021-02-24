@@ -1,0 +1,17 @@
+#image {
+    width: 293px;
+    height: 293px;
+    object-fit: cover;
+    margin: 0 14px 28px 14px;
+    border-radius: 0 !important;
+    cursor: pointer;
+}
+
+#gallery {
+    width: 963px;
+    margin: 0 auto;
+}
+
+#line-break {
+    margin: 28px 14px 28px 14px;
+}
