@@ -10,21 +10,28 @@ class PicsService {
         this.picsDAO=picsDAO
     }
 
-    savePic = function(picsDTO){
+    savePic = function(picsDTO, userId){
      
+
         let newPic = new picsDAO({
-           // userId: 
+            userId: userId,
             img: picsDTO.image
        });
-      /*
-       var newPic = new picsDAO;
-       newPic.img.data = picsDTO;
-       */
+         
+       
 
        newPic.save();
        //return 'pic saved';
     }
 
+
+    sendPic = function(){
+
+       var newPic = new picsDAO;
+       
+
+
+    }
     
 }
 
