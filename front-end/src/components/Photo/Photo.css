@@ -1,0 +1,17 @@
+#profileImage {
+    height:75px;
+    width:75px;
+    max-width:auto;
+    max-height:auto;
+    object-fit:cover;
+  }
+
+#mainImage{
+    max-width:400px;
+    max-height:400px;
+    object-fit:cover;
+}
+
+#photoBody{
+    margin: 0 auto;
+}
