@@ -1,17 +1,32 @@
-#profileImage {
+#profile-image {
     height:75px;
     width:75px;
     max-width:auto;
     max-height:auto;
     object-fit:cover;
+    cursor: pointer;
   }
 
-#mainImage{
+#main-image{
     max-width:400px;
     max-height:400px;
     object-fit:cover;
 }
 
-#photoBody{
+#photo-body{
     margin: 0 auto;
+}
+
+#heart-icon{
+    cursor: pointer;
+}
+
+#photo-username
+{
+    font-size: 28px;
+    font-weight: 300;
+    margin: auto;
+    padding: 10px;
+    text-align: center;
+    float:right;
 }
