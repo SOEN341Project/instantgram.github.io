@@ -1,9 +1,7 @@
 
-
-//const multer = require('multer');
-//const upload = multer({dest: 'images/'});
 const picsDAO = require('../data_access_layer/picsDAO');
-//import picsDAO from '../data_access_layer/picsDAO';
+
+const fs = require('fs');
 
 class PicsService {
     constructor(picsDAO){
@@ -11,25 +9,37 @@ class PicsService {
     }
 
     savePic = function(picsDTO, userId){
-     
-
-        let newPic = new picsDAO({
+        //console.log('***********in service***************');
+        let img = fs.readFileSync(picsDTO.path);
+        var convertedImg = img.toString('base64');
+        let picToSave={
             userId: userId,
-            img: picsDTO.image
-       });
-         
-       
+            img: convertedImg
+        }
 
-       newPic.save();
+        let newPic = new picsDAO(picToSave);
+
+        newPic.save();
+        return {message:'picture posted'};
+        
+    
+
+
+       /*
+       .then(result =>{
+            return {success: true, result: result} ;
+       }).catch(err=>{
+           if (err) return {success: false, error: err};
+       })
+       */
        //return 'pic saved';
     }
 
 
-    sendPic = function(){
-
-       var newPic = new picsDAO;
-       
-
+    getPic = function(){
+        //console.log('***********in service***************');
+        const foundPic= picsDAO.find();
+        return foundPic;
 
     }
     
