@@ -1,9 +1,12 @@
+
+var PicsService =require('../service_layer/PicsService');
 var express = require('express');
 var router = express.Router();
 
 
-const multer = require('multer');
-const upload = multer({dest: 'images/'});
+
+//const multer = require('multer');
+//const upload = multer({dest: 'images/'});
 
 /*
 //multer options
@@ -29,9 +32,15 @@ const upload = multer({
 
 
 
-router.post('/', upload.single('postedImage'),(req, res, next)=>{
+router.post('/', (req, res, next)=>{
     console.log(req.file);
+    const picsDTO = req.body;
+    const picsService = new PicsService();
+    picsService.savePic(picsDTO);
+    res.send('yep');
 
+
+    //res.send({message: message});
 
     //res.send();
 
