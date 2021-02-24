@@ -32,11 +32,12 @@ const upload = multer({
 
 
 
-router.post('/', (req, res, next)=>{
+router.post('/:userId', (req, res, next)=>{
     console.log(req.file);
+    const userId = req.params.userId;
     const picsDTO = req.body;
     const picsService = new PicsService();
-    picsService.savePic(picsDTO);
+    picsService.savePic(picsDTO,userId);
     res.send('yep');
 
 
@@ -66,7 +67,7 @@ router.post('/', (req, res, next)=>{
 
 
 router.get('/', function(req, res, next) {
-    res.send('getworks');
+    
   });
   
   module.exports = router;

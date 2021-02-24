@@ -1,18 +1,22 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const picId = Schema.picId;
+const ObjectId = Schema.ObjectId;
 
 
 var picSchema = new Schema({
-    /*
+        
     userId:{
-        type: picId,
+        type: ObjectId,
         required: true
     },
-    */
+    
+
     img: { 
-        type: String,
-        required: true
+       
+       // type: String,
+        //required: true
+        data: Buffer,
+        contentType: String
     }
 }, 
 {
