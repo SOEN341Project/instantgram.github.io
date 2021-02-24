@@ -1,4 +1,11 @@
 import React from 'react';
+import logo from './logo.png';
+
+export const Logo = (props) => {
+    return (
+        <img src={logo} />
+    );
+}
 
 export const HeartIcon = (props) => {
     return (
