@@ -1,0 +1,44 @@
+
+
+#container{
+    max-width: 70rem;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+/* #profile-header{
+    padding: 5rem 0;
+} */
+
+
+#image-cropper img{
+    border-radius: 50%;
+    object-fit: cover;
+    width: 10rem;
+    height: 10rem;
+}
+
+#image-cropper{
+    float: left;
+    width: calc(33% - 1rem);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 3rem;
+}
+
+#profile-username
+{
+    display: inline-block;
+    font-size: 2rem;
+    font-weight: 300;
+    float: left;
+    width: calc(66% - 2rem);
+}
+
+#real-name{
+    font-weight: 600;
+    font-size: 1.2rem;
+    line-height: 1.5;
+    vertical-align: sub;
+}
