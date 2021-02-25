@@ -19,9 +19,12 @@ const upload = multer({
 
 
 router.post('/:userId', upload.single('picture'),(req, res, next)=>{
-    //console.log('***********in controler*************');
+    console.log('***********in controler*************');
+    console.log(req.file);
+    
     const userId = req.params.userId;
     const picsDTO = req.file;
+    //const picsDTO = req.body;
     const picsService = new PicsService();
     const response=picsService.savePic(picsDTO,userId);
     res.send(response);

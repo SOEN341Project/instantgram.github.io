@@ -25,7 +25,8 @@ router.post('/register', function(req, res){
   const fName = req.body.fName;
   const lName = req.body.lName;
   const password = req.body.password;
-
+  console.log(req.body);
+  console.log(password);
   req.checkBody('email', 'Email is required').notEmpty();
   req.checkBody('email', 'Email is not valid').isEmail();
   req.checkBody('fName', 'First Name is required').notEmpty();
@@ -50,10 +51,9 @@ router.post('/register', function(req, res){
       if(err){
         console.log(err);
         return;
-      } else{
-        req.flash('Success','You are now registered and can log in');
-      }
+      } else return res.send();
     });
+    return res.send();
   }
 });
 
