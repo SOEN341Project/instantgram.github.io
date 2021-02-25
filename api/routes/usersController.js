@@ -12,7 +12,7 @@ router.use(expressValidator());
 */
 
 
-let User = require('../data_access_layer/user');
+let User = require('../data_access_layer/usersDAO');
 
 //register form
 router.get('/register', function(req,res){
@@ -21,16 +21,18 @@ router.get('/register', function(req,res){
 
 //register process
 router.post('/register', function(req, res){
-  const email = req.body.email;
-  const fName = req.body.fName;
-  const lName = req.body.lName;
+  const username = req.body.username;
+  //const email = req.body.email;
+  //const fName = req.body.fName;
+  //const lName = req.body.lName;
   const password = req.body.password;
   console.log(req.body);
   console.log(password);
-  req.checkBody('email', 'Email is required').notEmpty();
-  req.checkBody('email', 'Email is not valid').isEmail();
-  req.checkBody('fName', 'First Name is required').notEmpty();
-  req.checkBody('lName', 'Last Name is required').notEmpty();
+  req.checkBody('username', 'Username is required').notEmpty();
+  //req.checkBody('email', 'Email is required').notEmpty();
+  //req.checkBody('email', 'Email is not valid').isEmail();
+  //req.checkBody('fName', 'First Name is required').notEmpty();
+  //req.checkBody('lName', 'Last Name is required').notEmpty();
   req.checkBody('password', 'Password is required').notEmpty();
 
   let errors = req.validationErrors();
@@ -41,9 +43,10 @@ router.post('/register', function(req, res){
     });
   } else {
     let newUser = new User({
-      email:email,
-      fName:fName,
-      lName:lName,
+      username:username,
+      //email:email,
+      //fName:fName,
+      //lName:lName,
       password:password,
     });
 

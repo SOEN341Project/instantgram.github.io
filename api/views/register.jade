@@ -4,13 +4,10 @@ extends layout
 block content
     h1 Register 
     form(method='POST', action='/users/register')
-        #form-group label Email:
-            input.form-control(name='email', type='text')
-        #form-group label First Name:
-            input.form-control(name='fName', type='text')
-        #form-group label Last Name:
-            input.form-control(name='lName', type='text')
-        #form-group label Password:
+        #form-group Username:
+            input.form-control(name='username', type='text')
+         #form-group Password:
             input.form-control(name='password', type='password')
         br
         input.btn.btn-primary(type='submit', value='Register')
+
