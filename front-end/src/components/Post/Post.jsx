@@ -7,7 +7,7 @@ import './Post.css';
 
 const Post = (props) => {
     const img = "https://media.npr.org/assets/img/2015/02/03/globe_west_2048_sq-3c11e252772de81daba7366935eb7bd4512036b8.jpg";
-    
+    let userID;
     return (
         <Modal
             {...props}
@@ -20,7 +20,7 @@ const Post = (props) => {
                     Post a Photo
                 </Modal.Title>
             </Modal.Header>
-            <Form action="my_redirect_url" method="post" onSubmit={""}>
+            <Form action={"http://localhost:3000/postpic/" + userID} method="post" onSubmit={""}>
                 <Form.Group role="form">
                     <Modal.Body id="post-container">
                         <Form.File accept="image/*" name="photo-post" id="formcheck-api-custom" custom>
