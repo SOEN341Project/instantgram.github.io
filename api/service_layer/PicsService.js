@@ -9,9 +9,12 @@ class PicsService {
     }
 
     savePic = function(picsDTO, userId){
-        //console.log('***********in service***************');
+        console.log('***********in service***************');
         let img = fs.readFileSync(picsDTO.path);
         var convertedImg = img.toString('base64');
+
+        //const convertedImg=picsDTO.picture;
+
         let picToSave={
             userId: userId,
             img: convertedImg
