@@ -11,9 +11,9 @@ const RegistrationForm = (props) => {
         aria-labelledby="contained-modal-title-vcenter"
         centered
         >
-                <Modal.Header closeButton>
-                    <Modal.Title>Register Now</Modal.Title>
-                </Modal.Header>
+        <Modal.Header closeButton>
+            <Modal.Title>Register Now</Modal.Title>
+        </Modal.Header>
             <Form>
                 <Modal.Body>
                         <Form.Group controlId="registrationUsername">

@@ -6,6 +6,8 @@ import Navigation from './components/Navigation/Navigation';
 import PhotoGallery from './components/PhotoGallery/PhotoGallery';
 import ProfileDetails from './components/ProfileDetails/ProfileDetails';
 import Users from './components/Users/Users';
+import Pictures from './components/Users/Pictures';
+import PostPicture from './components/Users/PostPicture';
 
 function App() {
   const img = "https://media.npr.org/assets/img/2015/02/03/globe_west_2048_sq-3c11e252772de81daba7366935eb7bd4512036b8.jpg";
@@ -16,6 +18,8 @@ function App() {
     <>
       <Navigation />
       <Users />
+      <Pictures />
+      <PostPicture />
       <ProfileDetails profileimage = {profileimage} username = {username}/>
       <PhotoGallery images={arr} />
     </>
