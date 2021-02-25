@@ -2,7 +2,10 @@ extends layout
 
 block content
     h1="Login"
-    form(action="/", method="POST")
-        input(type="email", placeholder = "Enter your email address")
-        input(type="pass", placeholder = "Enter your password")
-        button(type="submit") Submit
+    form(action="/login", method="POST")
+        #form-group Username:
+            input.form-control(type="text", placeholder = "Username", name="username")
+         #form-group Password:
+            input.form-control(name='password', type='password', placeholder = "Password")
+        br
+        input.btn.btn-primary(type='submit', value='Login')
