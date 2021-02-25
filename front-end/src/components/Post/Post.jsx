@@ -1,54 +1,53 @@
-import React from 'react';
+import React, { useState, useRef } from "react";
 import axios from 'axios';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import Image from 'react-bootstrap/Image';
 import './Post.css';
 
 const Post = (props) => {
-    const img = "https://media.npr.org/assets/img/2015/02/03/globe_west_2048_sq-3c11e252772de81daba7366935eb7bd4512036b8.jpg";
-    let userID;
+  	const [selectedImage, setSelectedImage] = useState(null);
+	const fileInput = useRef(null);
+	const [disabled, setDisabled] = useState(true);
+	const [userID, setUserID] = useState("768");
 
-    const [disabled, setDisabled] = React.useState(true);
-    const [selectedFile, setSelectedFile] = React.useState(null);
+  	const submitForm = () => {
+		props.onHide();
+		const formData = new FormData();
+		formData.append("picture", selectedImage);
+		
+		axios.post("http://localhost:9000/postpic/" + userID, formData)
+		.then((response) => {
+			alert("Image uploaded successfully.");
+			console.log(response);
+		})
+		.catch((error) => {
+			console.log(`Error: ${error}`);
+			alert("An error occured while trying to upload the image.");
+		});
+	};
 
-    const submitForm = () => {
-        props.onHide(); //Does this work
-        const formData = new FormData();
-        formData.append("file", selectedFile);
-
-        axios.post("UPLOAD_URL", formData)
-        .then((res) => {
-            alert("File Upload success");
-            })
-            .catch((err) => alert("File Upload Error"));
-    };
-
-    return (
-        <Modal {...props} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
+	const handleOnChange = (e) => {
+		setSelectedImage(e.target.files[0]);
+		setDisabled(!e.target.files[0]);
+	};
+	
+  	return (
+		<Modal {...props} size="lg" aria-labelledby="contained-modal-title-vcenter" backdrop="static" keyboard={false} onEntering={() => setDisabled(true)} centered>
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
                     Post a Photo
                 </Modal.Title>
             </Modal.Header>
-            <Form>
-                <Form.Group role="form">
-                    <Modal.Body id="post-container">
-                        <Form.File id="file-upload" onChange={() => setDisabled(!disabled)} />
-                        <input
-                            type="file"
-                            value={selectedFile}
-                            onChange={(e) => setSelectedFile(e.target.files[0])}
-                        />
-                    </Modal.Body>
-                    <Modal.Footer>
-                        <Button variant="primary" disabled={disabled} onClick={submitForm}>Post</Button>
-                    </Modal.Footer>
-                </Form.Group>
-            </Form>
-      </Modal>
-    );
-}
+			<Modal.Body id="post-container">
+				<form>
+					<input type="file" accept=".jpg, .jpeg, .png" onChange={handleOnChange} id="file-upload" />
+				</form>
+			</Modal.Body>
+            <Modal.Footer>
+                <Button variant="primary" disabled={disabled} onClick={submitForm}>Post</Button>
+            </Modal.Footer>
+      	</Modal>
+  	);
+};
 
 export default Post;
