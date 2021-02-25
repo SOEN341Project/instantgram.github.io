@@ -17,7 +17,9 @@ class PicsService {
 
         let picToSave={
             userId: userId,
-            img: convertedImg
+            img: convertedImg,
+            likes: '0'
+            //picId: picId
         }
 
         let newPic = new picsDAO(picToSave);
