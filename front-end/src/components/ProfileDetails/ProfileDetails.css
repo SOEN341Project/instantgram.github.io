@@ -3,13 +3,9 @@
 #container{
     max-width: 70rem;
     margin: 0 auto;
-    padding: 2rem 0;
+    padding-top: 2rem;
+    display:grid;
 }
-
-/* #profile-header{
-    padding: 5rem 0;
-} */
-
 
 #image-cropper img{
     border-radius: 50%;
@@ -24,7 +20,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 3rem;
+    margin-right: 2rem;
 }
 
 #profile-username
