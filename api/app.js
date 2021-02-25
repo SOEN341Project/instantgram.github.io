@@ -14,7 +14,7 @@ let db = mongoose.connection;
 db.once('open', function(){
   console.log('Connected to MongoDB');
 });
-
+mongoose.set('useFindAndModify', false);
 
 //check database errors
 db.on('error', function(err){
