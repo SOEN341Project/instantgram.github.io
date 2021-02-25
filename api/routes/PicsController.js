@@ -16,16 +16,23 @@ const upload = multer({
   */
  
 
+router.post('/comment',async (req, res, next)=>{
+    console.log('***********in controler*************');
+    console.log(req.body);
+    const picsDTO = req.body;
+    const picsService = new PicsService();
+    const response= await picsService.leaveComment(picsDTO);
+    res.send(response);
+});
 
-
-router.post('/:userId', upload.single('picture'),(req, res, next)=>{
+router.post('/:userId', upload.single('picture'),async (req, res, next)=>{
     console.log('***********in controler*************');
     console.log(req.file);
     console.log(req.body);
     const userId = req.params.userId;
     const picsDTO = req.file;
     const picsService = new PicsService();
-    const response=picsService.savePic(picsDTO,userId);
+    const response= await picsService.savePic(picsDTO,userId);
     res.send(response);
 
 
@@ -52,10 +59,11 @@ router.post('/:userId', upload.single('picture'),(req, res, next)=>{
 });
 
 
-router.get('/', async (req, res, next) => {
+router.get('/:userId', async (req, res, next) => {
     //console.log('***********in controler*************');
+    const userId = req.params.userId;
     const picsService = new PicsService();
-    const response= await picsService.getPic();
+    const response= await picsService.getPic(userId);
     res.send({pictures:response});
   });
   

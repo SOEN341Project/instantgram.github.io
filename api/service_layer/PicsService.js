@@ -1,5 +1,7 @@
 
 const picsDAO = require('../data_access_layer/picsDAO');
+//var mongodb = require('mongodb');
+
 
 const fs = require('fs');
 
@@ -8,7 +10,32 @@ class PicsService {
         this.picsDAO=picsDAO
     }
 
-    savePic = function(picsDTO, userId){
+    leaveComment= async function(picsDTO){
+        console.log('***********in service***************');
+        const picId=picsDTO.picId;
+        const from=picsDTO.fromUser;
+        const comment=picsDTO.comment;
+        try{
+        await picsDAO.findOneAndUpdate({"_id" : picId},{
+            
+            $push:{
+                comments:{
+                    comment:{
+                        from: from,
+                        text: comment
+                    } 
+                }    
+            }
+        })
+        //return picsDAO.find({"_id" : picId});
+        return {message: 'Comment posted.'}
+        }catch{
+
+        }
+
+    }
+
+    savePic = async function(picsDTO, userId){
         console.log('***********in service***************');
         let img = fs.readFileSync(picsDTO.path);
         var convertedImg = img.toString('base64');
@@ -19,12 +46,11 @@ class PicsService {
             userId: userId,
             img: convertedImg,
             likes: '0'
-            //picId: picId
         }
 
         let newPic = new picsDAO(picToSave);
 
-        newPic.save();
+        await newPic.save();
         return {message:'picture posted'};
         
     
@@ -41,9 +67,9 @@ class PicsService {
     }
 
 
-    getPic = function(){
+    getPic = async function(userId){
         //console.log('***********in service***************');
-        const foundPic= picsDAO.find();
+        const foundPic= await picsDAO.find({"userId":userId});
         return foundPic;
 
     }
