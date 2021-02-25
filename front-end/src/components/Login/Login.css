@@ -1,0 +1,29 @@
+#form{
+    width: 31rem;
+    margin: auto;
+    background-color:white;
+}
+
+#logo{
+    display:flex;
+    justify-content: center;
+    padding: 2rem;
+}
+
+#loginbutton{
+    display:flex;
+    justify-content: center; 
+    width: 25rem;
+    margin: 0 auto;
+}
+
+#signup{
+    justify-content: center;
+    display: flex;
+    padding: 2rem;
+}
+
+#inputs{
+    margin: 0 auto;
+    width: 25rem;
+}
