@@ -4,15 +4,26 @@ const Schema = mongoose.Schema;
 
 
 var picSchema = new Schema({
-      
+   
+
     userId:{
         type: String,
+        required: true
+    },
+
+    /*
+    picId:{
+        type: ObjectId,
         required: true,
         unique: true
     },
-    
+    */
 
     img: {  
+        type: String,
+        required: true
+    },
+    likes:{
         type: String,
         required: true
     }
