@@ -1,4 +1,8 @@
 #comment-form{
-    height:20px;
     width:100%;
+}
+
+#commentButton {
+    display: block;
+    margin-top: 2px;
 }

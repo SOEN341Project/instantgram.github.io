@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import Photo from '../Photo/Photo'
 import './PhotoGallery.css';
 
 const PhotoGallery = (props) => {
@@ -7,6 +8,8 @@ const PhotoGallery = (props) => {
     const url = 'http://localhost:9000/postpic/';
     const [user, setUser] = React.useState('768'); //props.username
     const [pics, setPics] = React.useState([]);
+
+    const [photoVisibility, setPhotoVisibility] = React.useState(false);
 
     React.useEffect(() => {
         getPicsInfo();
@@ -31,7 +34,18 @@ const PhotoGallery = (props) => {
 
     const pictures = pics.map(pic => convertImage(pic.img));
     
-    const newPictures = pictures.map((picture, i) => <img rounded src={picture} key={`image_${i}`} id="image" />);
+    const newPictures = pictures.map((picture, i) => {
+        return(
+            <>
+                <img rounded src={picture} key={`image_${i}`} onClick={() => setPhotoVisibility(true)} id="image" />
+                <Photo
+                    source={picture}
+                    show={photoVisibility}
+                    onHide={() => setPhotoVisibility(false)}ss
+                />
+            </>
+        );
+    });
     
     return (
         <div id="gallery">

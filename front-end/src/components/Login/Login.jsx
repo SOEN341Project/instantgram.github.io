@@ -21,6 +21,7 @@ const Login = (props) => {
 		.then((response) => {
 			console.log(response);
             setPerson(response.data.username);
+            //alert(person);
 		})
 		.catch((error) => {
 			console.log(`Error: ${error}`);
