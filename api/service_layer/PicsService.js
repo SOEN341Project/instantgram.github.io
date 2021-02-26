@@ -43,8 +43,8 @@ class PicsService {
            }
         let img = fs.readFileSync(picsDTO.path);
         var convertedImg = img.toString('base64');
-       }catch{
-
+       }catch(e){
+            console.log(e);
        }
 
         //const convertedImg=picsDTO.picture;
