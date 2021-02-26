@@ -15,7 +15,7 @@ class PicsService {
         const picId=picsDTO.picId;
         const from=picsDTO.fromUser;
         const comment=picsDTO.comment;
-        //try{
+        try{
         await picsDAO.findOneAndUpdate({"_id" : picId},{
             
             $push:{
@@ -27,11 +27,11 @@ class PicsService {
                 }    
             }
         })
-        //return picsDAO.find({"_id" : picId});
-        return {message: 'Comment posted.'}
-        //}catch{
 
-       // }
+        return {message: 'Comment posted.'}
+        }catch(e){
+            console.log(e);
+        }
 
     }
 
@@ -76,35 +76,24 @@ class PicsService {
 
     getPic = async function(userId){
         //console.log('***********in service***************');
-    const foundPic= 
-    
-        await picsDAO.find({"userId":userId}, function(err, foundPic){
-            /*
-            if(err){
-                console.log(err)
-                return {
-                    status: 401,
-                    response: 'Error'
-                }
-            } 
-            if(!foundPic){
-                return {
-                    status: 300,
-                    response: 'User has no picture'
-                }
-            }
-            else{
-                return {
-                    status: 200,
-                    response: foundPic
-                }
-            }
-            */
-        });
-        return foundPic;
+        const foundPic= await picsDAO.find({"userId":userId});
+                    
+        if(!foundPic[0])
+            return {message: 'Thiw user has no pictures'};       
+        else{
+            return foundPic ;
+        }
 
     }
     
 }
 
 module.exports = PicsService;
+
+/*    if(err){
+        console.log(err)
+
+           return 'Error';
+
+    } 
+    */
