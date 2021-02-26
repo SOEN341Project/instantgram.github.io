@@ -7,9 +7,10 @@ const ProfileDetails = (props) => {
         <div id = "container">
           
             <div id = "profile-header">
-                <div id ="image-cropper">
+
+                {/*<div id ="image-cropper">
                     <img src={props.profileimage}></img>
-                </div>
+                </div>*/}
                 <h2 id="profile-username">{props.username}</h2>
                
                 {/* <p id ="real-name">Brian Diesel</p>  */}
