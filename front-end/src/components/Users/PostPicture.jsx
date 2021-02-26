@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 
 const PostPicture = (props) => {
-    const url = 'http://localhost:3000/postpic/543'; //'http://localhost:3000/users'
+    const url = 'http://localhost:3000/postpic/333'; //'http://localhost:3000/users'
 
     React.useEffect(() => {
         postPic();
