@@ -8,7 +8,7 @@ const Post = (props) => {
   	const [selectedImage, setSelectedImage] = useState(null);
 	const fileInput = useRef(null);
 	const [disabled, setDisabled] = useState(true);
-	const [userID, setUserID] = useState("768");
+	const [userID, setUserID] = useState("768"); //props.username
 
   	const submitForm = () => {
 		props.onHide();
