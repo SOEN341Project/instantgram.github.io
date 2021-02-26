@@ -25,4 +25,9 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: cd api 
+    - run: npm install
+      shell: bash
+      working-directory: api
+    - run: npm start
+      shell: bash
+      working-directory: api
