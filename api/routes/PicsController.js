@@ -29,13 +29,16 @@ router.post('/:userId', upload.single('picture'),async (req, res, next)=>{
     console.log('***********in controler*************');
     console.log(req.file);
     console.log(req.body);
+    if(!req.file){
+        return res.status(401).send('The picture was not sent/recieved.')
+    }else{
     const userId = req.params.userId;
     const picsDTO = req.file;
     const picsService = new PicsService();
-    const response= await picsService.savePic(picsDTO,userId);
-    res.send(response);
+    const {response}= await picsService.savePic(picsDTO,userId);
+        return res.status(200).send(response);
 
-
+    }
 
     //res.send({message: message});
  
@@ -64,7 +67,7 @@ router.get('/:userId', async (req, res, next) => {
     const userId = req.params.userId;
     const picsService = new PicsService();
     const response= await picsService.getPic(userId);
-    res.send({pictures:response});
+    res.send(response);
   });
   
   module.exports = router;

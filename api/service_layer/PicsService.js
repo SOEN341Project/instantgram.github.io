@@ -15,7 +15,7 @@ class PicsService {
         const picId=picsDTO.picId;
         const from=picsDTO.fromUser;
         const comment=picsDTO.comment;
-        try{
+        //try{
         await picsDAO.findOneAndUpdate({"_id" : picId},{
             
             $push:{
@@ -29,16 +29,23 @@ class PicsService {
         })
         //return picsDAO.find({"_id" : picId});
         return {message: 'Comment posted.'}
-        }catch{
+        //}catch{
 
-        }
+       // }
 
     }
 
     savePic = async function(picsDTO, userId){
         console.log('***********in service***************');
+        try{
+            if(!picsDTO.path){
+                
+           }
         let img = fs.readFileSync(picsDTO.path);
         var convertedImg = img.toString('base64');
+       }catch{
+
+       }
 
         //const convertedImg=picsDTO.picture;
 
@@ -69,7 +76,15 @@ class PicsService {
 
     getPic = async function(userId){
         //console.log('***********in service***************');
-        const foundPic= await picsDAO.find({"userId":userId});
+        const foundPic= await picsDAO.find({"userId":userId}, function(err, user){
+            if(err){
+                console.log(err)
+                return ;
+            } 
+            if(!user){
+                return;
+            }
+        });
         return foundPic;
 
     }
