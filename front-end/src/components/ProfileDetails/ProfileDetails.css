@@ -1,5 +1,5 @@
 #container{
-    max-width: 70rem;
+    max-width: 925px;
     margin: 0 auto;
     padding-top: 2rem;
     display:grid;
@@ -23,11 +23,12 @@
 
 #profile-username
 {
-    display: inline-block;
+    display: block;
     font-size: 2rem;
     font-weight: 300;
     float: left;
     width: calc(66% - 2rem);
+    margin-left: 20px;
 }
 
 #real-name{

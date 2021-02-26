@@ -4,11 +4,10 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
-const Login = (props) => {
+const Registration = (props) => {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [person, setPerson] = useState();
 
     const submitForm = () => {
 		props.onHide();
@@ -17,10 +16,9 @@ const Login = (props) => {
             "password": password
         };
 		
-		axios.post("http://localhost:9000/login", formData)
+		axios.post("http://localhost:9000/users/register", formData)
 		.then((response) => {
 			console.log(response);
-            setPerson(response.data.username);
 		})
 		.catch((error) => {
 			console.log(`Error: ${error}`);
@@ -36,25 +34,25 @@ const Login = (props) => {
         <Modal {...props} size="md" aria-labelledby="contained-modal-title-vcenter" backdrop="static" keyboard={false} onEntering={resetTextFields} centered>
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
-                    Login
+                    Register
                 </Modal.Title>
             </Modal.Header>
 			<Modal.Body id="post-container">
 				<Form>
                     <Form.Group>
-                        <Form.Label>Username</Form.Label>
+                        <Form.Label>Create a Username</Form.Label>
                         <Form.Control type="text" placeholder="Enter username" value={username} onChange={(e) => setUsername(e.target.value)} />
                         <br />
-                        <Form.Label>Password</Form.Label>
+                        <Form.Label>Create a Password</Form.Label>
                         <Form.Control type="password" placeholder="Enter password" value={password} onChange={(e) => setPassword(e.target.value)} />
                     </Form.Group>
 				</Form>
 			</Modal.Body>
             <Modal.Footer>
-                <Button variant="primary" onClick={submitForm}>Login</Button>
+                <Button variant="primary" onClick={submitForm}>Register</Button>
             </Modal.Footer>
       	</Modal>
     );
 }
 
-export default Login;
+export default Registration;
