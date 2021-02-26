@@ -10,7 +10,7 @@ class PicsService {
         this.picsDAO=picsDAO
     }
 
-    leaveComment= async function(picsDTO){
+    leaveComment = async function(picsDTO){
         console.log('***********in service***************');
         const picId=picsDTO.picId;
         const from=picsDTO.fromUser;
