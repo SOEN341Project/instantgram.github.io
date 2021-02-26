@@ -28,6 +28,8 @@ jobs:
     - run: npm install
       shell: bash
       working-directory: front-end
-    - run: npm start
+    - run: npm start & npx wait-on http://localhost:3000
       shell: bash
       working-directory: front-end
+    - env:
+        CI: true
