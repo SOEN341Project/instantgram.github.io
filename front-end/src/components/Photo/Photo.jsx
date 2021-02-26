@@ -7,6 +7,7 @@ import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image'
 import './Photo.css'
 import { HeartIcon, ActiveHeartIcon } from '../Icons/Icons';
+import Comments from './Comments';
 
 function Photo(props){
   let { profileImage, userName, postImage } = props;
@@ -39,7 +40,7 @@ function Photo(props){
     <a id="heart-icon" href={"pictureLiked"}>
       <HeartIcon/>
     </a>
-
+    <Comments/>  
     </Modal.Footer>
     </Modal.Dialog>
   );
