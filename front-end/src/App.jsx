@@ -18,9 +18,6 @@ function App() {
   return (
     <>
       <Navigation />
-      <Users />
-      <Pictures />
-      <Post2 />
       <PostPicture />
       <ProfileDetails profileimage = {profileimage} username = {username}/>
       <PhotoGallery images={arr} />
