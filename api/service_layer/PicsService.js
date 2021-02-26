@@ -76,8 +76,11 @@ class PicsService {
 
     getPic = async function(userId){
         //console.log('***********in service***************');
-        const foundPic= await picsDAO.find({"userId":userId}, function(err, foundPic){
-            /*if(err){
+    const foundPic= 
+    
+        await picsDAO.find({"userId":userId}, function(err, foundPic){
+            /*
+            if(err){
                 console.log(err)
                 return {
                     status: 401,
@@ -86,7 +89,7 @@ class PicsService {
             } 
             if(!foundPic){
                 return {
-                    status: 200,
+                    status: 300,
                     response: 'User has no picture'
                 }
             }
