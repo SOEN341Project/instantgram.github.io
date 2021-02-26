@@ -17,7 +17,7 @@ const PhotoGallery = (props) => {
     }, []);
     
     const getPicsInfo = () => {
-        axios.get("http://localhost:9000/postpic/768")
+        axios.get("http://localhost:9000/postpic/333")
         .then((response) => {
             console.log("Hello");
             setPics(response.data);
