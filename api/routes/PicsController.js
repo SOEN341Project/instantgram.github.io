@@ -22,7 +22,7 @@ router.post('/comment',async (req, res, next)=>{
     const picsDTO = req.body;
     const picsService = new PicsService();
     const response= await picsService.leaveComment(picsDTO);
-    res.send(resonse);
+    res.send(response);
 });
 
 router.post('/:userId', upload.single('picture'),async (req, res, next)=>{
