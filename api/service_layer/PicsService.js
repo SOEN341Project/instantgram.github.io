@@ -77,13 +77,14 @@ class PicsService {
     getPic = async function(userId){
         //console.log('***********in service***************');
         const foundPic= await picsDAO.find({"userId":userId});
-                    
+        return foundPic ;  
+        /*
         if(!foundPic[0])
             return {message: 'Thiw user has no pictures'};       
         else{
-            return foundPic ;
+            
         }
-
+*/
     }
     
 }
