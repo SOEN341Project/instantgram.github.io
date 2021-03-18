@@ -1,0 +1,11 @@
+extends layout 
+
+
+block content
+    h1 Follow 
+    form(method='POST', action='/follow/qwer')
+        #form-group Username:
+            input.form-control(name='username', type='text')
+        br
+        input.btn.btn-primary(type='submit', value='Register')
+
