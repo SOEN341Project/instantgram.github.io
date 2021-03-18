@@ -3,7 +3,7 @@ var router = express.Router();
 const bcrypt = require('bcryptjs');
 var expressValidator = require('express-validator');
 router.use(expressValidator());
-
+var RegistrationService =require('../service_layer/RegistrationService');
 
 //GET users listing. 
 /*router.get('/', function(req, res, next) {
@@ -12,7 +12,7 @@ router.use(expressValidator());
 */
 
 
-let User = require('../data_access_layer/usersDAO');
+
 
 //register form
 router.get('/register', function(req,res){
@@ -20,7 +20,8 @@ router.get('/register', function(req,res){
 });
 
 //register process
-router.post('/register', function(req, res){
+router.post('/register',async function(req, res){
+  console.log('***********in controler*************');
   const username = req.body.username;
   //const email = req.body.email;
   //const fName = req.body.fName;
@@ -42,21 +43,10 @@ router.post('/register', function(req, res){
       errors:errors
     });
   } else {
-    let newUser = new User({
-      username:username,
-      //email:email,
-      //fName:fName,
-      //lName:lName,
-      password:password,
-    });
-
-    newUser.save(function(err){
-      if(err){
-        console.log(err);
-        return;
-      } else return res.send();
-    });
-    return res.send();
+    const registrationService= new RegistrationService();
+    const regDTO=req.body;
+    const response = await registrationService.registerUser(regDTO);
+    return res.send(response);
   }
 });
 
