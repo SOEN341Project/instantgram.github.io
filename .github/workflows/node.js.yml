@@ -27,7 +27,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm ci
       shell: bash
-      working-directory: api
+      working-directory: instantgram.github.io
     - run: npm run test
       shell: bash
       working-directory: api
