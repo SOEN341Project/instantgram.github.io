@@ -23,6 +23,8 @@ const Registration = (props) => {
 		.catch((error) => {
 			console.log(`Error: ${error}`);
 		});
+
+        window.location.reload();
 	};
 
     const resetTextFields = () => {

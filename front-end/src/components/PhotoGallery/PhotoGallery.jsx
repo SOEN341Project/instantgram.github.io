@@ -42,7 +42,7 @@ const PhotoGallery = (props) => {
                 <Photo
                     source={picture}
                     show={photoVisibility}
-                    onHide={() => setPhotoVisibility(false)}ss
+                    onHide={() => setPhotoVisibility(false)}
                 />
             </>
         );
