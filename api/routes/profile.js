@@ -24,7 +24,7 @@ router.post('/', function(req, res, next){
   return res.status(200).send(req.session.user);
   });
 
-router.get('/:username', function(req,res,next){
+router.post('/:username', function(req,res,next){
   const uName = req.params.username;
   User.findOne({username: uName}, function(err,user){
     if(err){

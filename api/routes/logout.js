@@ -4,7 +4,7 @@ var router = express.Router();
 var session = require('express-session');
 
 /* GET home page. */
-router.get('/', function(req, res, next){
+router.post('/', function(req, res, next){
       req.session.destroy();
       return res.status(200).send("Logged Out");
   })
