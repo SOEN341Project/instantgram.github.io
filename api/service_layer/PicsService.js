@@ -35,23 +35,24 @@ class PicsService {
 
     }
 
-    savePic = async function(picsDTO, userId){
+    savePic = async function(picsDTO, userId, picBodyDTO){
         console.log('***********in service***************');
         try{
-            if(!picsDTO.path){
+           if(!picsDTO.path){
                 
-           }
-        let img = fs.readFileSync(picsDTO.path);
-        var convertedImg = img.toString('base64');
-       }catch(e){
+          }
+
+        }catch(e){
             console.log(e);
-       }
+        }
 
         //const convertedImg=picsDTO.picture;
-
+        let img = fs.readFileSync(picsDTO.path);
+        var convertedImg = img.toString('base64');
         let picToSave={
             userId: userId,
             img: convertedImg,
+            description: picBodyDTO.description,
             likes: '0'
         }
 

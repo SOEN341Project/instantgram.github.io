@@ -35,8 +35,9 @@ router.post('/:userId', upload.single('picture'),async (req, res, next)=>{
     const userId = req.params.userId;
     const picsDTO = req.file;
     const picsService = new PicsService();
-    const response= await picsService.savePic(picsDTO,userId);
-        return res.status(200).send(response);
+    const picBodyDTO = req.body;
+    const response= await picsService.savePic(picsDTO,userId, picBodyDTO);
+    return res.status(200).send(response);
 
     }
 
