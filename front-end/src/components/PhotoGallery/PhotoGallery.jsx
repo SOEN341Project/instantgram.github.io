@@ -8,6 +8,7 @@ const PhotoGallery = (props) => {
     const url = 'http://localhost:9000/postpic/';
     const [user, setUser] = React.useState('768'); //props.username
     const [pics, setPics] = React.useState([]);
+    const [photoID, setPhotoID] = React.useState('');
 
     const [photoVisibility, setPhotoVisibility] = React.useState(false);
 
@@ -37,7 +38,7 @@ const PhotoGallery = (props) => {
     const newPictures = pictures.map((picture, i) => {
         return(
             <>
-                <img rounded src={picture} key={`image_${i}`} onClick={() => setPhotoVisibility(true)} id="image" />
+                <img rounded src={picture} key={`image_${i}`} onClick={() => {setPhotoVisibility(true); setPhotoID(`_id${i}`);console.log(photoID)}} id="image"/>
                 <Photo
                     source={picture}
                     show={photoVisibility}
