@@ -24,9 +24,10 @@ function App() {
   React.useEffect(() => {
     getUserInfo();
   }, []);
-    
+  
+  axios.defaults.withCredentials = true;
   const getUserInfo = () => {
-    axios.get(url)
+    axios.get(url, {withCredentials: true}) 
     .then((response) => {
       setUser(response.data.username);
       console.log(response.data.username);

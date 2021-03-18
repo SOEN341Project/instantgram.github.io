@@ -17,7 +17,7 @@ const Login = (props) => {
             "password": password
         };
 		
-		axios.post("http://localhost:9000/login", formData)
+		axios.post("http://localhost:9000/login/", formData, {withCredentials: true})
 		.then((response) => {
 			console.log(response);
             setPerson(response.data.username);
