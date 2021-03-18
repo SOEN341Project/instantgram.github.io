@@ -3,3 +3,6 @@ extends layout
 block content
     h1="Logged In"
     p welcome #{thing}
+    form(action="/profile", method="POST")
+        br
+        input.btn.btn-primary(type='submit', value='profile')
