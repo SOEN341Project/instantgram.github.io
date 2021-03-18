@@ -66,5 +66,10 @@ class followService{
             console.log(e);
         }
     }
+    checkFollowing = async function(usernameToCheck) {
+        const uNameTC = usernameToCheck;
+        const getFollow = await followDAO.find({username: uNameTC})
+        return getFollow;
+    }
 }
 module.exports = followService;
