@@ -46,7 +46,11 @@ router.post('/register',async function(req, res){
     const registrationService= new RegistrationService();
     const regDTO=req.body;
     const response = await registrationService.registerUser(regDTO);
-    return res.send(response);
+    if(response){
+      return res.status(200).send({response: "Success"});
+    }else{
+      return res.status(200).send({response: "Fail"});
+    }
   }
 });
 

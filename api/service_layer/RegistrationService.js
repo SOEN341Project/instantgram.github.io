@@ -17,8 +17,8 @@ class RegistrationService {
         await newUser.save(function(err){
             if(err){
             console.log(err);
-            return "not registered";
-            } else return "registration successful";
+            return false;
+            } else return true;
         });
 
     }
