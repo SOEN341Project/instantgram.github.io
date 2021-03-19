@@ -24,7 +24,7 @@ const Registration = (props) => {
 			console.log(`Error: ${error}`);
 		});
 
-        window.location.reload();
+        //window.location.reload();
 	};
 
     const resetTextFields = () => {

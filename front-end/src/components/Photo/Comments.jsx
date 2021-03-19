@@ -40,6 +40,8 @@ const submitForm = () => {
     .catch((error) => {
         console.log(`Error: ${error}`);
     });
+
+    setCommentTyped('');
 };
 
 //retrieve comment data from backend
@@ -62,13 +64,13 @@ const submitForm = () => {
         console.log('comments:'+photoID);
     }
 
-    const createCommentStructure = props.commentList.map(comment => (
+    const createCommentStructure = props.commentList ? props.commentList.map(comment => (
         <ListGroup.Item id="comment-item">
             <Row md={4}>
                 <Col id="userName">{comment.commentFrom}</Col>
                 <Col xs={6}>{comment.commentText}</Col>     
             </Row>
-        </ListGroup.Item> ));
+        </ListGroup.Item> )) : null;
 
 
 

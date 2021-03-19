@@ -8,7 +8,7 @@ const Login = (props) => {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [person, setPerson] = useState();
+    //const [person, setPerson] = useState();
 
     const submitForm = () => {
 		props.onHide();
@@ -20,14 +20,14 @@ const Login = (props) => {
 		axios.post("http://localhost:9000/login/", formData, {withCredentials: true})
 		.then((response) => {
 			console.log(response);
-            setPerson(response.data.username);
+            //setPerson(response.data.username);
             //alert(person);
 		})
 		.catch((error) => {
 			console.log(`Error: ${error}`);
 		});
         
-        window.location.reload();
+        //window.location.reload();
 	};
 
     const resetTextFields = () => {

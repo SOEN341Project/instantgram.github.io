@@ -11,12 +11,12 @@ function Photo(props){
   //let postImage = "https://cdna.artstation.com/p/assets/images/images/028/506/514/large/derk-elshof-deathstar-01.jpg?1594675093";
   let username = props.user.username;
   let photoID = props.photoID;
-  let comments = props.newestPhoto.comments;
-  
+
+  let comments = props.newestPhoto ? props.newestPhoto.comments : null;
+  let comment = comments ? comments.map(commentObject => {return ({"commentFrom" : commentObject.comment.from, "commentText" : commentObject.comment.text})}) : null;
   //let commentText = comments.map(commentObject => commentObject.comment.text);
   //let commentFrom = comments.map(commentObject => commentObject.comment.from);
 
-  let comment = comments.map(commentObject => {return ({"commentFrom" : commentObject.comment.from, "commentText" : commentObject.comment.text})});
 
   console.log("photoid: "+photoID);
   return(
