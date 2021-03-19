@@ -1,7 +1,8 @@
 import React from 'react';
 import axios from 'axios';
-import Photo from '../Photo/Photo'
 import './PhotoGallery.css';
+
+import Photo from '../Photo/Photo'
 
 const PhotoGallery = (props) => {
     
@@ -40,9 +41,10 @@ const PhotoGallery = (props) => {
             <>
                 <img rounded src={picture} key={`image_${i}`} onClick={() => {setPhotoVisibility(true); setPhotoID(`_id${i}`);console.log(photoID)}} id="image"/>
                 <Photo
+                    user={props.user}
                     source={picture}
                     show={photoVisibility}
-                    onHide={() => setPhotoVisibility(false)}ss
+                    onHide={() => setPhotoVisibility(false)}
                 />
             </>
         );

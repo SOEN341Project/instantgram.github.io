@@ -26,12 +26,13 @@ router.post('/', function(req, res, next){
   return res.status(200).send(req.session.user);
   });
 
-router.get('/:username', async function(req,res,next){
+#123-Restructure-profile-and-login
+router.post('/:username', async function(req,res,next){
   const username = req.params.username;
   const profileService = new ProfileService();
   const {status, user}  = await profileService.getUser(username);
-  res.status(200).send(req.session.user);
-  console.log(req.session.user);
+  //res.status(200).send(req.session.user);
+  //console.log(req.session.user);
   res.status(status).send(user);
 });
 module.exports = router;
