@@ -26,7 +26,7 @@ router.post('/', function(req, res, next){
   return res.status(200).send(req.session.user);
   });
 
-#123-Restructure-profile-and-login
+//#123-Restructure-profile-and-login
 router.post('/:username', async function(req,res,next){
   const username = req.params.username;
   const profileService = new ProfileService();

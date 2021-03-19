@@ -8,7 +8,7 @@ const Login = (props) => {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [person, setPerson] = useState();
+    //const [person, setPerson] = useState();
 
     const submitForm = () => {
 		props.onHide();
