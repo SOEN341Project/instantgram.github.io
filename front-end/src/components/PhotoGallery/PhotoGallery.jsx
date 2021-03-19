@@ -9,7 +9,7 @@ const PhotoGallery = (props) => {
     const url = 'http://localhost:9000/postpic/';
     const [pics, setPics] = React.useState([]);
     const [photoID, setPhotoID] = React.useState('');
-    const [comments, setComments] = React.useState([[]]);
+    const [comments, setComments] = React.useState([]);
     const [username, setUsername] = React.useState(props.user.username); //props.username
     const [userID, setUserID] = React.useState(props.user.userID); //props.username
 
@@ -58,6 +58,7 @@ const PhotoGallery = (props) => {
                     show={photoVisibility}
                     onHide={() => setPhotoVisibility(false)}
                     photoID = {pics[i]._id}
+                    newestPhoto = {pics[i]}
                 />
             </>
         );
