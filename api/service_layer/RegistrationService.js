@@ -14,13 +14,13 @@ class RegistrationService {
             password:regDTO.password
           });
         
-        await newUser.save(function(err){
-            if(err){
-            console.log(err);
+          try{
+            const response = await newUser.save();
+            if(!response) return false;
+            else return true;
+          }catch(e){
             return false;
-            } else return true;
-        });
-
+          }
     }
 
 }

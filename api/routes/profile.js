@@ -2,8 +2,10 @@ var express = require('express');
 const usersDAO = require('../data_access_layer/usersDAO');
 var router = express.Router();
 var session = require('express-session');
+var ProfileService = require('../service_layer/ProfileService');
 
-let User = require('../data_access_layer/usersDAO');
+
+
 /* GET home page. */
 
 router.get('/', function(req, res, next) {
@@ -24,17 +26,12 @@ router.post('/', function(req, res, next){
   return res.status(200).send(req.session.user);
   });
 
-router.get('/:username', function(req,res,next){
-  const uName = req.params.username;
-  User.findOne({username: uName}, function(err,user){
-    if(err){
-      console.log(err);
-      return res.status(500).send();
-    }
-    if(!user){
-      return res.status(404).send();
-    }
-    return res.status(200).send(user);
-  })
-})
+router.get('/:username', async function(req,res,next){
+  const username = req.params.username;
+  const profileService = new ProfileService();
+  const {status, user}  = await profileService.getUser(username);
+  res.status(200).send(req.session.user);
+  console.log(req.session.user);
+  res.status(status).send(user);
+});
 module.exports = router;

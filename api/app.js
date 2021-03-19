@@ -24,10 +24,10 @@ db.on('error', function(err){
 
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/usersController');
+var usersRouter = require('./routes/RegistrationController');
 var picsRouter = require('./routes/picsController');
 var loginRouter = require('./routes/login');
-var users = require('./routes/usersController');
+var users = require('./routes/RegistrationController');
 var dashboardRouter = require('./routes/dashboard');
 var logoutRouter = require('./routes/logout');
 var profileRouter = require('./routes/profile');
