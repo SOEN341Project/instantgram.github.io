@@ -9,8 +9,9 @@ function Photo(props){
   //let { profileImage, userName, postImage } = props;
   //let profileImage = "https://ftw.usatoday.com/wp-content/uploads/sites/90/2013/10/darth-vader.jpg?w=1000&h=600&crop=1";
   //let postImage = "https://cdna.artstation.com/p/assets/images/images/028/506/514/large/derk-elshof-deathstar-01.jpg?1594675093";
-  let username = "username";
-
+  let username = props.user.username;
+  let photoID = props.photoID;
+  console.log("photoid: "+photoID);
   return(
     <Modal {...props} size="md" aria-labelledby="contained-modal-title-vcenter" backdrop="static" keyboard={false} centered>
       <Modal.Header closeButton >
@@ -25,7 +26,10 @@ function Photo(props){
         {/*<a id="heart-icon" href={"/pictureLiked"}>
           <HeartIcon/>
   </a>*/}
-        <Comments user={props.user} />
+        <Comments 
+        user={props.user} 
+        photoID = {photoID}
+       />
       </Modal.Footer>
     </Modal>
   );

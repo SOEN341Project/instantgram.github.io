@@ -39,17 +39,18 @@ const PhotoGallery = (props) => {
     const newPictures = pictures.map((picture, i) => {
         return(
             <>
-                <img rounded src={picture} key={`image_${i}`} onClick={() => {setPhotoVisibility(true); setPhotoID(`_id${i}`);console.log(photoID)}} id="image"/>
+                <img rounded src={picture} key={`image_${i}`} onClick={() => {setPhotoVisibility(true); setPhotoID(pics[i]._id);console.log(photoID)}} id="image"/>
                 <Photo
                     user={props.user}
                     source={picture}
                     show={photoVisibility}
                     onHide={() => setPhotoVisibility(false)}
+                    photoID = {pics[i]._id}
                 />
             </>
         );
     });
-    
+
     return (
         <div id="gallery">
             <hr id="line-break" />
