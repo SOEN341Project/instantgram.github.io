@@ -5,6 +5,7 @@ import './App.css';
 import Navigation from './components/Navigation/Navigation';
 import ProfileDetails from './components/ProfileDetails/ProfileDetails';
 import PhotoGallery from './components/PhotoGallery/PhotoGallery';
+import FollowerDisplay from './components/FollowerDisplay/FollowerDisplay';
 //import OtherUserProfile
 
 function App() {
@@ -41,9 +42,10 @@ function App() {
   };
 
   const getAllUsers = () => {
-    axios.get('http://localhost:9000/profile/all/all/')
+    axios.get('http://localhost:9000/allusers')
       .then((response) => {
           setAllUsers(response.data);
+          console.log(response);
           console.log(response.data);
       })
       .catch((error) => {
@@ -51,13 +53,17 @@ function App() {
       });
   }
 
+  const allUsernames = allUsers.map(user => user.username);
+  console.log(allUsernames);
+
   const userObject = {"username": username, "userID": userID};
 
   return (
     <>
-      <Navigation user={userObject} allUsers={allUsers} />
-      <ProfileDetails user={userObject} />
+      <Navigation user={userObject} allUsers={allUsernames} />
+      <ProfileDetails user={userObject} allUsers={allUsernames} />
       {username ? <PhotoGallery user={userObject} /> : null}
+      {username ? <FollowerDisplay user={userObject} /> : null}
     </>
   );
 }

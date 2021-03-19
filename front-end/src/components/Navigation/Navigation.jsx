@@ -37,21 +37,21 @@ const Navigation = (props) => {
     if (props.allUsers.includes(searchQuery)) {
       setCurrentUser(searchQuery);
       setSearchQuery('');
-      console.log("Searched user is: " + currentUser);
     } else {
       setCurrentUser(null);
       setSearchQuery('');
     }
   }
+  console.log("Searched user is: " + currentUser);
 
   return (
     <div id="navbar-container">
       <Navbar sticky="top" id="navbar">
         <Navbar.Brand href="/"><Logo /></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Form className="m-auto" inline onSubmit={handleSearch} >
+          <Form className="m-auto" inline >
             <FormControl type="text" placeholder="Search" className="mr-sm-2" id="search-bar" disabled={!props.user.username} onChange={(e) => setSearchQuery(e.target.value)} />
-            <Button id="search-button" variant="outline-success">Go</Button>
+            <Button id="search-button" variant="outline-success" onClick={handleSearch} >Go</Button>
           </Form>
           <Nav>
           {props.user.username ? <Nav.Link href="/"><HomeIcon /></Nav.Link> : null}
