@@ -7,9 +7,10 @@ import Photo from '../Photo/Photo'
 const PhotoGallery = (props) => {
     
     const url = 'http://localhost:9000/postpic/';
-    const [user, setUser] = React.useState('768'); //props.username
     const [pics, setPics] = React.useState([]);
     const [photoID, setPhotoID] = React.useState('');
+    const [username, setUsername] = React.useState(props.user.username); //props.username
+    const [userID, setUserID] = React.useState(props.user.userID); //props.username
 
     const [photoVisibility, setPhotoVisibility] = React.useState(false);
 
@@ -18,7 +19,7 @@ const PhotoGallery = (props) => {
     }, []);
     
     const getPicsInfo = () => {
-        axios.get(url + user)
+        axios.get(url + username)
         .then((response) => {
             setPics(response.data);
             console.log(response.data);

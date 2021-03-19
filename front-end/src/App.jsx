@@ -5,14 +5,17 @@ import './App.css';
 import Navigation from './components/Navigation/Navigation';
 import ProfileDetails from './components/ProfileDetails/ProfileDetails';
 import PhotoGallery from './components/PhotoGallery/PhotoGallery';
+//import OtherUserProfile
 
 function App() {
   const url = 'http://localhost:9000/profile/';
   const [username, setUsername] = React.useState(null);
   const [userID, setUserID] = React.useState(null);
+  const [allUsers, setAllUsers] = React.useState([]);
 
   React.useEffect(() => {
     getUserInfo();
+    getAllUsers();
   }, []);
   
   axios.defaults.withCredentials = true;
@@ -37,11 +40,22 @@ function App() {
     });
   };
 
+  const getAllUsers = () => {
+    axios.get('http://localhost:9000/profile/all/all/')
+      .then((response) => {
+          setAllUsers(response.data);
+          console.log(response.data);
+      })
+      .catch((error) => {
+          console.log(`Error: ${error}`);
+      });
+  }
+
   const userObject = {"username": username, "userID": userID};
 
   return (
     <>
-      <Navigation user={userObject} />
+      <Navigation user={userObject} allUsers={allUsers} />
       <ProfileDetails user={userObject} />
       {username ? <PhotoGallery user={userObject} /> : null}
     </>

@@ -6,16 +6,16 @@ import './Post.css';
 
 const Post = (props) => {
   	const [selectedImage, setSelectedImage] = useState(null);
-	const fileInput = useRef(null);
+	//const fileInput = useRef(null);
 	const [disabled, setDisabled] = useState(true);
-	const [userID, setUserID] = useState("768"); //props.username
+	//const [userID, setUserID] = useState("768"); //props.username
 
   	const submitForm = () => {
 		props.onHide();
 		const formData = new FormData();
 		formData.append("picture", selectedImage);
 		
-		axios.post("http://localhost:9000/postpic/" + userID, formData)
+		axios.post("http://localhost:9000/postpic/" + props.user.username, formData)
 		.then((response) => {
 			alert("Image uploaded successfully.");
 			console.log(response);
