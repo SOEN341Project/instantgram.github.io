@@ -50,7 +50,7 @@ const submitForm = () => {
 
     //methods for adding comments
 
-    const onAddCommentClick = event => {
+    const onLoadComments = event => {
         setCommentList(commentList.concat(
         <ListGroup.Item id="comment-item">
             <Row md={4}>
@@ -62,13 +62,23 @@ const submitForm = () => {
         console.log('comments:'+photoID);
     }
 
+    const createCommentStructure = props.commentList.map(comment => (
+        <ListGroup.Item id="comment-item">
+            <Row md={4}>
+                <Col id="userName">{comment.commentFrom}</Col>
+                <Col xs={6}>{comment.commentText}</Col>     
+            </Row>
+        </ListGroup.Item> ));
+
+
+
         return(
 
             <Form id="comment-form" onEntering={resetTextFields}>
             <Form.Group controlId="comments">
 
             <ListGroup id="comment-section" props>
-                        {commentList}
+                {createCommentStructure}
             </ListGroup>
 
                 <Form.Control 
@@ -80,7 +90,7 @@ const submitForm = () => {
                     <Button
                         variant="primary" 
                         id="commentButton"
-                        onClick = {() => {submitForm();onAddCommentClick();}}
+                        onClick = {() => {submitForm();}}
                         >
                         Comment
                     </Button>
