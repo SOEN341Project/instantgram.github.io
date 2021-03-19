@@ -1,5 +1,4 @@
 import React from 'react';
-import Image from 'react-bootstrap/Image'
 import './ProfileDetails.css'
 
 const ProfileDetails = (props) => {
@@ -11,7 +10,7 @@ const ProfileDetails = (props) => {
                 {/*<div id ="image-cropper">
                     <img src={props.profileimage}></img>
                 </div>*/}
-                <h2 id="profile-username">{props.username}</h2>
+                <h2 id="profile-username">{props.user.username || "Login to use Instantgram."}</h2>
                
                 {/* <p id ="real-name">Brian Diesel</p>  */}
                 {/*Fetch real name? or ommit*/}       

@@ -1,10 +1,10 @@
-import './App.css';
 import React from 'react';
 import axios from 'axios';
+import './App.css';
+
 import Navigation from './components/Navigation/Navigation';
-import PhotoGallery from './components/PhotoGallery/PhotoGallery';
 import ProfileDetails from './components/ProfileDetails/ProfileDetails';
-import PostPicture from './components/Users/PostPicture'
+import PhotoGallery from './components/PhotoGallery/PhotoGallery';
 
 function App() {
   const url = 'http://localhost:9000/profile/';
@@ -37,12 +37,13 @@ function App() {
     });
   };
 
+  const userObject = {"username": username, "userID": userID};
+
   return (
     <>
-      <Navigation loggedIn={username ? true : false} />
-      <PostPicture />
-      <ProfileDetails username = {username || "Login to use Instantgram."}/>
-      {username ? <PhotoGallery  /> : null}
+      <Navigation user={userObject} />
+      <ProfileDetails user={userObject} />
+      {username ? <PhotoGallery user={userObject} /> : null}
     </>
   );
 }

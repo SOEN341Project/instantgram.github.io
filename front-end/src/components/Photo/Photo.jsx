@@ -1,9 +1,5 @@
 import React from 'react';
 import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image'
 import './Photo.css'
 import { HeartIcon, ActiveHeartIcon } from '../Icons/Icons';
@@ -29,7 +25,7 @@ function Photo(props){
         {/*<a id="heart-icon" href={"/pictureLiked"}>
           <HeartIcon/>
   </a>*/}
-        <Comments/>
+        <Comments user={props.user} />
       </Modal.Footer>
     </Modal>
   );
