@@ -31,4 +31,4 @@ Meeting and interacting with people is often very difficult due to the harsh tim
 #### Back-End:
 - <b>Node.js</b>
 - <b>Express.js</b> (Framework for Node.js)
-- <b>MySQL database</b>
+- <b>MongoDB</b>
