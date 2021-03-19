@@ -12,49 +12,37 @@ import './Comments.css'
 const Comments = (props) => {
 
     const [commentTyped, setCommentTyped] = React.useState('');
-    const [photoID,setPhotoID] = React.useState(null);
-    const [username,setUsername] = React.useState('Max');
+    const [photoID,setPhotoID] = React.useState();
+    const [username,setUsername] = React.useState();
     const [commentList, setCommentList] = React.useState([]);
 
     const url = 'http://localhost:9000/profile/';
 
  React.useEffect(() => {
-    getUserInfo();
+    setUsername(props.user.username);
+    setPhotoID(props.photoID);
   }, []);
+
+
+//send comment data to backend
+
+const submitForm = () => {
+    const formData = {
+    "fromUser" : username,
+    "comment": commentTyped,
+    "picId" : photoID
+    };
     
-  const getUserInfo = () => {
-    axios.get(url)
+    axios.post("http://localhost:9000/postpic/comment", formData)
     .then((response) => {
-      setUsername(response.data.username);
-      console.log(response.data.username);
+        console.log(response);
     })
     .catch((error) => {
-      console.log(`Error: ${error}`);
+        console.log(`Error: ${error}`);
     });
-  };
+};
 
-
-
-    const submitForm = () => {
-		const formData = {
-            "comment": commentTyped,
-            "photoID": photoID,
-            "username": username,
-        };
-
-        axios.post("http://localhost:9000/postpic/comment", formData)
-		.then((response) => {
-			console.log(response);
-            setUsername(response.data.username);
-            setPhotoID(response.data.photoID);
-            setCommentTyped(response.data.commentTyped);
-            console.log(commentTyped)
-            console.log(username)
-		})
-		.catch((error) => {
-			console.log(`Error: ${error}`);
-		});
-	};
+//retrieve comment data from backend
 
     const resetTextFields = () => {
         setCommentTyped('');
@@ -71,9 +59,9 @@ const Comments = (props) => {
             </Row>
         </ListGroup.Item> 
         ))
+        console.log('comments:'+photoID);
     }
 
- 
         return(
 
             <Form id="comment-form" onEntering={resetTextFields}>
