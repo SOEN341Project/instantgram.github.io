@@ -27,7 +27,9 @@
 }
 
 #search-button {
-    display: none;
+    height: 28px;
+    width: 70px;
+    font-size: 14px;
 }
 
 @media only screen and (max-width: 530px) {

@@ -18,6 +18,9 @@ const Navigation = (props) => {
   const [loginVisibility, setLoginVisibility] = React.useState(false);
   const [registerVisibility, setRegisterVisibility] = React.useState(false);
 
+  const [searchQuery, setSearchQuery] = React.useState('');
+  const [currentUser, setCurrentUser] = React.useState('');
+
   const logout = () => {
 		axios.post("http://localhost:9000/logout", {}, {withCredentials: true})
 		.then((response) => {
@@ -26,16 +29,29 @@ const Navigation = (props) => {
 		.catch((error) => {
 			console.log(`Error: ${error}`);
 		});
+
+    window.location.reload();
 	};
+
+  const handleSearch = () => {
+    if (props.allUsers.includes(searchQuery)) {
+      setCurrentUser(searchQuery);
+      setSearchQuery('');
+      console.log("Searched user is: " + currentUser);
+    } else {
+      setCurrentUser(null);
+      setSearchQuery('');
+    }
+  }
 
   return (
     <div id="navbar-container">
       <Navbar sticky="top" id="navbar">
         <Navbar.Brand href="/"><Logo /></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Form className="m-auto" inline>
-            <FormControl type="text" placeholder="Search" className="mr-sm-2" id="search-bar" disabled={!props.user.username} />
-            <Button id="search-button" variant="outline-success">Search</Button>
+          <Form className="m-auto" inline onSubmit={handleSearch} >
+            <FormControl type="text" placeholder="Search" className="mr-sm-2" id="search-bar" disabled={!props.user.username} onChange={(e) => setSearchQuery(e.target.value)} />
+            <Button id="search-button" variant="outline-success">Go</Button>
           </Form>
           <Nav>
           {props.user.username ? <Nav.Link href="/"><HomeIcon /></Nav.Link> : null}
