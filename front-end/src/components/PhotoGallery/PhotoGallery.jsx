@@ -37,6 +37,10 @@ const PhotoGallery = (props) => {
     };
 
     const pictures = pics.map(pic => convertImage(pic.img));
+
+    const [selectedPhoto, setSelectedPhoto] = React.useState('');
+    const [newestPhoto, setNewestPhoto] = React.useState(null);
+
     
     const newPictures = pictures.map((picture, i) => {
         return(
@@ -47,19 +51,13 @@ const PhotoGallery = (props) => {
                 onClick={() => {
                     setPhotoVisibility(true); 
                     setPhotoID(pics[i]._id);
+                    setSelectedPhoto(picture);
+                    setNewestPhoto(pics[i]);
                     console.log(photoID)
                     //setComments([pics[i].comments[].comment.from][pics[i].comments.comment.text]);
                     console.log(comments);
                          }
                     } id="image"/>
-                <Photo
-                    user={props.user}
-                    source={picture}
-                    show={photoVisibility}
-                    onHide={() => setPhotoVisibility(false)}
-                    photoID = {pics[i]._id}
-                    newestPhoto = {pics[i]}
-                />
             </>
         );
     });
@@ -68,6 +66,14 @@ const PhotoGallery = (props) => {
         <div id="gallery">
             <hr id="line-break" />
             {newPictures}
+            <Photo
+                user={props.user}
+                show={photoVisibility}
+                onHide={() => setPhotoVisibility(false)}
+                source={selectedPhoto}
+                photoID = {photoID}
+                newestPhoto = {newestPhoto}
+            />
             <hr id="line-break" />
         </div>
     );

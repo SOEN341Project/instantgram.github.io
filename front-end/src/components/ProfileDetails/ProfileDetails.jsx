@@ -1,5 +1,5 @@
 import React from 'react';
-import axios from "axios";
+import axios from 'axios';
 import './ProfileDetails.css';
 
 const ProfileDetails = (props) => {
@@ -30,10 +30,12 @@ const ProfileDetails = (props) => {
         <div id = "container">
             <div id = "profile-header">
                 <h2 id="profile-username">{props.user.username || "Login to use Instantgram."}</h2>
-                <form>
+                {props.user.username ?
+                    <form>
                     <input type="text" placeholder="Follow a user..." id="search-bar" onChange={(e) => setSearchQuery(e.target.value)} />
                     <button id="search-but" onClick={handleSearch}>Follow</button>
                 </form>
+                : null}
             </div>
         </div>
     )
