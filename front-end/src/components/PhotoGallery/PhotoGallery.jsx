@@ -9,6 +9,7 @@ const PhotoGallery = (props) => {
     const url = 'http://localhost:9000/postpic/';
     const [pics, setPics] = React.useState([]);
     const [photoID, setPhotoID] = React.useState('');
+    const [comments, setComments] = React.useState([[]]);
     const [username, setUsername] = React.useState(props.user.username); //props.username
     const [userID, setUserID] = React.useState(props.user.userID); //props.username
 
@@ -40,7 +41,17 @@ const PhotoGallery = (props) => {
     const newPictures = pictures.map((picture, i) => {
         return(
             <>
-                <img rounded src={picture} key={`image_${i}`} onClick={() => {setPhotoVisibility(true); setPhotoID(pics[i]._id);console.log(photoID)}} id="image"/>
+                <img rounded 
+                src={picture} 
+                key={`image_${i}`} 
+                onClick={() => {
+                    setPhotoVisibility(true); 
+                    setPhotoID(pics[i]._id);
+                    console.log(photoID)
+                    //setComments([pics[i].comments[].comment.from][pics[i].comments.comment.text]);
+                    console.log(comments);
+                         }
+                    } id="image"/>
                 <Photo
                     user={props.user}
                     source={picture}
