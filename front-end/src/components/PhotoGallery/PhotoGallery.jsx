@@ -56,6 +56,7 @@ const PhotoGallery = (props) => {
         <div id="gallery">
             <hr id="line-break" />
             {newPictures}
+            <hr id="line-break" />
         </div>
     );
 }
