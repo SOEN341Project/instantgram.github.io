@@ -1,4 +1,4 @@
-# **instantgram.github.io**
+# **instantgram.github.io**  [![Node.js CI](https://github.com/SOEN341Project/instantgram.github.io/actions/workflows/node.js.yml/badge.svg?branch=main)](https://github.com/SOEN341Project/instantgram.github.io/actions/workflows/node.js.yml)
 
 ### Objective
 Develop a social networking website that represents a simplified version of Instagram. Its main purpose is to facilitate interaction between people despite the distance that separates them. 
@@ -31,4 +31,4 @@ Meeting and interacting with people is often very difficult due to the harsh tim
 #### Back-End:
 - <b>Node.js</b>
 - <b>Express.js</b> (Framework for Node.js)
-- <b>MySQL database</b>
+- <b>MongoDB</b>

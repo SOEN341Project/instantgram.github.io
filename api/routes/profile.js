@@ -4,7 +4,7 @@ var router = express.Router();
 var session = require('express-session');
 var ProfileService = require('../service_layer/ProfileService');
 
-
+const userDAO = require('../data_access_layer/usersDAO');
 
 /* GET home page. */
 
@@ -26,13 +26,17 @@ router.post('/', function(req, res, next){
   return res.status(200).send(req.session.user);
   });
 
-//#123-Restructure-profile-and-login
 router.post('/:username', async function(req,res,next){
   const username = req.params.username;
   const profileService = new ProfileService();
   const {status, user}  = await profileService.getUser(username);
-  //res.status(200).send(req.session.user);
-  //console.log(req.session.user);
   res.status(status).send(user);
 });
+
+router.post('/all/all', async function(req,res,next){
+  const profileService = new ProfileService();
+  const founduser  = await profileService.getAllUser();
+  res.status(200).send(founduser);
+});
+
 module.exports = router;

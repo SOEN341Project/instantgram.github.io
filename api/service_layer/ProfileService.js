@@ -13,7 +13,20 @@ class ProfileService {
         }catch(e){
             return {status: 500, user: e};
         }
+        
+        
     }
-
+    getAllUser = async function(){
+        console.log('**in service**');
+        var userArray = [];
+        (await usersDAO.find()).forEach(function(myDoc){
+            userArray.push(new UserUsername(myDoc.username));
+        })
+        console.log(userArray);
+        return userArray;
+        function UserUsername(username){
+            this.username = username;
+          }
+    }
 }
 module.exports = ProfileService;
