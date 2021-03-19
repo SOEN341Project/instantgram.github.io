@@ -66,7 +66,7 @@ const Comments = (props) => {
         setCommentList(commentList.concat(
         <ListGroup.Item id="comment-item">
             <Row md={4}>
-                <Col>{username}</Col>
+                <Col id="userName">{username}</Col>
                 <Col xs={6}>{commentTyped}</Col>     
             </Row>
         </ListGroup.Item> 
@@ -78,6 +78,11 @@ const Comments = (props) => {
 
             <Form id="comment-form" onEntering={resetTextFields}>
             <Form.Group controlId="comments">
+
+            <ListGroup id="comment-section" props>
+                        {commentList}
+            </ListGroup>
+
                 <Form.Control 
                     type="text" 
                     placeholder="Leave a comment" 
@@ -91,9 +96,7 @@ const Comments = (props) => {
                         >
                         Comment
                     </Button>
-                <ListGroup id="comment-section" props>
-                    {commentList}
-                </ListGroup>
+               
              </Form.Group>
              </Form>
             

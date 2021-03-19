@@ -1,8 +1,19 @@
 #comment-form{
     width: 100%;
+    margin-bottom: 0%;
 }
 
-#commentButton {
+#commentButton{
     display: block;
     margin-top: 2px;
+}
+
+#comment-section{
+    width: 100%;
+    margin-bottom: 1rem;
+    /* margin-top: 1rem; */
+}
+
+#userName{
+    font-weight: bold;
 }
