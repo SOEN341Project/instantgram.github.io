@@ -6,6 +6,60 @@ class followService{
         this.follow = follow;
         this.userDAO = userDAO;
     }
+    checkUserExist = async function(usernameTC) {
+        const uNameTC = usernameTC;
+        var found;
+        return found = await userDAO.findOne({username: uNameTC}, async function(err, user) {
+            if(err){
+                console.log(err);
+            } else if(!user) {
+                found = false;
+            } else {
+                found = true;
+            }
+        })
+    }
+    checkUserInFollow = async function(usernameTC) {
+        const uNameTC = usernameTC;
+        var found;
+        return found = await followDAO.findOne({username: uNameTC}, async function(err, follow){
+            if(err){
+                console.log(err);
+            } else if(!follow) {
+                found = false;
+            } else {
+                found = true;
+            }
+        })
+    }
+    addToDB = async function(username){
+        const uName = username; 
+        let newFollow = new followDAO({
+            username: uName
+        })
+        newFollow.save(function(err){
+            if(err){
+                console.log(err);
+            }
+        })
+    }
+    addFollower = async function(usernameFollower, username) {
+        const Follower = usernameFollower;
+        const user = username;
+        try {
+        await followDAO.findOneAndUpdate({"username": user},{
+            $push:{
+            followers:{
+                user: Follower
+                }
+            }
+        })
+        return 200;
+    } catch(e) {    
+        console.log(e);
+        return e;
+    }
+    }
     followUser = async function(usernameToFollow, usernameFollowing){
         console.log('***Follow In Service Begin**');
         const uNameTF = usernameToFollow;
@@ -13,63 +67,81 @@ class followService{
         if(usernameToFollow == usernameFollowing) {
             console.log("You cannot follow yourself!");
             return {message: 'Cannot Follow Self'};
-        }
-        try{
-            await userDAO.findOne({username: uNameTF}, async function(err, user) {
-                if(err){
-                    console.log(err);
+        } try {
+            await followDAO.findOneAndUpdate({"username": uNameF},{
+                $push:{
+                following:{
+                    user: uNameTF
+                    }
                 }
-                else if(!user) {
-                    console.log("User To Follow Not Found");
-                    return {message: "User To Follow Not Found"};
-                } else {
-                    await followDAO.findOne({"username": uNameF}, async function(err, follow){
-                        if(err){
-                            console.log(err);
-                        }
-                        else if(!follow) {
-                            console.log("Creating New User for followDAO");
-                            let newFollow = new followDAO({
-                                username: uNameF
-                            })
-                            newFollow.save(function(err){
-                                if(err){
-                                    console.log(err);
-                                }
-                            })
-                        }
-                        console.log("Checking for duplicate followers");
-                        await followDAO.findOne({following: {$elemMatch: {user: uNameTF}}}, async function(err, found){
-                            if(err){
-                                console.log(err);
-                            } else if (!found) {
-                                console.log("Adding New follower entry to an existing user" + uNameTF);
-                                await followDAO.findOneAndUpdate({"username": uNameF},{
-                                    $push:{
-                                      following:{
-                                         user: uNameTF
-                                        }
-                                    }
-                                })
-                            } else {
-                                console.log("User is already being followed"+ found);
-                                return {message: "User is already being followed"};
-                            }
-                        })
-                    })
-                    console.log("User Followed");
-                    return {message: 'User Followed.'}
-                } 
             })
-        }
-        catch(e){
+            return 200;
+        } catch (e) {
             console.log(e);
+            return e;
         }
     }
     checkFollowing = async function(usernameToCheck) {
         const uNameTC = usernameToCheck;
         const getFollow = await followDAO.find({username: uNameTC})
         return getFollow;
+    }
+    checkDuplicateFollow = async function(username, user){
+        var Duplicate;
+        return Duplicate = await followDAO.findOne({
+            "username": user, 
+            following: {$elemMatch: {user: username}}}, async function(err, found){
+                if(err){
+                    console.log(err);
+                    Duplicate = err;
+                } else if(!found) {
+                    Duplicate = false;
+                } else {
+                    Duplicate = true;
+                }
+        })
+    }
+    checkDuplicateFollower = async function(username, user){
+        var Duplicate;
+        return Duplicate = await followDAO.findOne({
+            "username": user,
+            followers:{$elemMatch: {user: username}}
+        }, async function(err, found){
+            if(err){
+                console.log(err);
+                Duplicate = err;
+            } else if(!found) {
+                Duplicate = false;
+            } else {
+                Duplicate = true;
+            }
+        })
+    }
+    unfollowUser = async function(username, user){
+        
+
+        try{
+            await followDAO.findOneAndUpdate({"username": user}, {
+                $pull: {
+                    following: {user: username}}
+                })
+                return 200;
+        } catch (e){
+            console.log(e);
+            return e;
+        }
+    }
+    removeFollower = async function(username, user){
+        try{
+            await followDAO.findOneAndUpdate({"username": user}, {
+                $pull: {
+                    followers:{user: username}}
+                })
+                return 200;
+        } catch (e){
+            console.log(e);
+            return e;
+        }
     }
 }
 module.exports = followService;

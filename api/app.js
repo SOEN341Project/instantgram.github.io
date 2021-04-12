@@ -34,6 +34,7 @@ var profileRouter = require('./routes/profile');
 var followRouter = require('./routes/follow');
 var followingRouter = require('./routes/following');
 var allUsersRouter = require('./routes/allUsers');
+var unfollowRouter = require('./routes/unfollow');
 
 var app = express();
 
@@ -61,6 +62,7 @@ app.use('/profile', profileRouter);
 app.use('/follow', followRouter);
 app.use('/following', followingRouter);
 app.use('/allusers', allUsersRouter);
+app.use('/unfollow', unfollowRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -10,7 +10,13 @@ const FollowSchema = mongoose.Schema({
     following: [{
         user:{
         type: String,
-        required: true
+        required: true,
+        }
+    }],
+    followers: [{
+        user: {
+            type: String,
+            required: true,
         }
     }]
 });
