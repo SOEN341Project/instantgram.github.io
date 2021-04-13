@@ -6,11 +6,11 @@ router.use(expressValidator());
 var followService = require('../service_layer/followService');
 
 router.get('/', function(req, res, next){
-    res.render('follow');
+    res.render('unfollow');
 })
 
 router.post('/:username', async(req,res,next)=>{
-    console.log("***Follow Begin***");
+    console.log("***Unfollow Begin***");
     if(!req.session.user){ 
         console.log("You are not logged in!");
         return res.status(403).send();
@@ -23,35 +23,39 @@ router.post('/:username', async(req,res,next)=>{
     const inDB = await FollowService.checkUserInFollow(user);
     const inDBFollower = await FollowService.checkUserInFollow(username);
     if(!exist) {
-        console.loge("Person to follow does not exist");
+        console.loge("Person to unfollow does not exist");
         return res.status(404).send();
     } else if(!inDB) {
-        await FollowService.addToDB(user);
+        console.log("You are not following anyone");
+        return res.status(409).send();
     }
     if(!inDBFollower) {
-        await FollowService.addToDB(username);
+        console.log("You arent following that person");
+        return res.status(409).send();
     }
 
     const DuplicateFollow = await FollowService.checkDuplicateFollow(username, user);
-    const DuplicateFollower = await FollowService.checkDuplicateFollower(username, user);
+    const DuplicateFollower = await FollowService.checkDuplicateFollower(user, username);
 
-    var addedFollower;
     var response = 409;
 
     if(DuplicateFollow && !DuplicateFollower) {
-        console.log("You cannot follow someone twice");
-        addedFollower = await FollowService.addFollower(user, username);
+        console.log("You have unfollowed them");
+        response = await FollowService.unfollowUser(username, user);
     } else if(!DuplicateFollow && DuplicateFollower) {
-        console.log("Duplicate follower but not follow");
-        response = await FollowService.followUser(username, user);
+        console.log("You are no longer their follower");
+        await FollowService.removeFollower(user, username);
+        response = 202;
     } else if(DuplicateFollow && DuplicateFollower) {
-        console.log("Double Duplicates");
+        console.log("Successful unfollow");
+        await FollowService.removeFollower(user, username);
+        response = await FollowService.unfollowUser(username, user);
     } else {
-        addedFollower = await FollowService.addFollower(user, username);
-        response = await FollowService.followUser(username, user);
+        console.log("You arent following that person");
+        response = 409;
     }
 
-    console.log('**Follow End**');
+    console.log('**Unfollow End**');
     return res.status(response).send();
 })
 
