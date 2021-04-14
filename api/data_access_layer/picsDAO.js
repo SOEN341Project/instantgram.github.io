@@ -40,6 +40,9 @@ var picSchema = new Schema({
     description: {
         type: String
     },
+    profilePic: {
+        type: Boolean
+    },
     likes:{
         type: String,
         required: true
