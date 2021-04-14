@@ -38,7 +38,6 @@ router.post('/:userId', upload.single('picture'),async (req, res, next)=>{
     const picBodyDTO = req.body;
     const response= await picsService.savePic(picsDTO,userId, picBodyDTO);
     return res.status(200).send(response);
-
     }
 
     //res.send({message: message});
@@ -64,12 +63,21 @@ router.post('/:userId', upload.single('picture'),async (req, res, next)=>{
 
 
 router.get('/:userId', async (req, res, next) => {
-    //console.log('***********in controler*************');
+    console.log('***********in controler*************');
     const userId = req.params.userId;
     const picsService = new PicsService();
     const response = await picsService.getPic(userId);
     res.send(response);
   });
+
+  router.get('/getProfilePic/:userId', async (req, res, next) => {
+    console.log('***********in controler*************');
+    const userId = req.params.userId;
+    const picsService = new PicsService();
+    const response = await picsService.getPic(userId,true);
+    res.send(response);
+  });
+
   
   module.exports = router;
    //.status(status).

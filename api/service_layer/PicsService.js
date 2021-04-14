@@ -47,19 +47,37 @@ class PicsService {
         //}
 
         //const convertedImg=picsDTO.picture;
-        let img = fs.readFileSync(picsDTO.path);
-        var convertedImg = img.toString('base64');
-        let picToSave={
-            userId: userId,
-            img: convertedImg,
-            description: picBodyDTO.description,
-            likes: '0'
+
+        if (picBodyDTO.profilePic==='true'){
+            console.log('***********yep***************');
+            try{
+                await picsDAO.findOneAndUpdate({"userId": userId,"profilePic" : true},{                   
+                        profilePic: false
+                })
+            }catch(e){
+                console.log(e);
+            }
+
         }
+        try{
+            let img = fs.readFileSync(picsDTO.path);
+            var convertedImg = img.toString('base64');
+            let picToSave={
+                userId: userId,
+                img: convertedImg,
+                description: picBodyDTO.description,
+                profilePic: picBodyDTO.profilePic,
+                likes: '0'
+            }
 
-        let newPic = new picsDAO(picToSave);
+            let newPic = new picsDAO(picToSave);
 
-        await newPic.save();
-        return {message:'picture posted'};
+            await newPic.save();
+            return {message:'picture posted'};
+        }catch(e){
+            console.log(e.message);
+            return {message:'not posted----' + e.message};
+        }
         
     
 
@@ -75,9 +93,11 @@ class PicsService {
     }
 
 
-    getPic = async function(userId){
-        //console.log('***********in service***************');
-        const foundPic= await picsDAO.find({"userId":userId});
+    getPic = async function(userId,...isProfilePic){
+        console.log('***********in service***************');
+        var foundPic= null;
+        if(isProfilePic==null||isProfilePic==false) foundPic= await picsDAO.find({'userId':userId});
+        else foundPic= await picsDAO.find({'userId':userId, profilePic:true});
         return foundPic ;  
         /*
         if(!foundPic[0])
