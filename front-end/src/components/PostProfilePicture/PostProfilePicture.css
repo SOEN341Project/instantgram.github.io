@@ -1,0 +1,13 @@
+#file-upload {
+    cursor: pointer;
+}
+
+#photo-preview {
+    display: block;
+    margin: 0 auto;
+    margin-top: 15px;
+    width: 50%;
+    height: 50%;
+    object-fit: cover;
+    border-radius: 0 !important;
+}

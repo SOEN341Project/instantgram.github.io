@@ -2,20 +2,19 @@ import React, { useState, useRef } from "react";
 import axios from 'axios';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
-import './Post.css';
+import './PostProfilePicture.css';
 
-const Post = (props) => {
+const PostProfilePicture = (props) => {
   	const [selectedImage, setSelectedImage] = useState(null);
 	//const fileInput = useRef(null);
 	const [disabled, setDisabled] = useState(true);
 	//const [userID, setUserID] = useState("768"); //props.username
-	const [caption, setCaption] = useState('');
 
   	const submitForm = () => {
 		props.onHide();
 		const formData = new FormData();
 		formData.append("picture", selectedImage);
-		formData.append("description", caption);
+        formData.append("profilePic", true);
 		
 		axios.post("http://localhost:9000/postpic/" + props.user.username, formData)
 		.then((response) => {
@@ -37,13 +36,12 @@ const Post = (props) => {
 		<Modal {...props} size="lg" aria-labelledby="contained-modal-title-vcenter" backdrop="static" keyboard={false} onEntering={() => setDisabled(true)} centered>
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
-                    Post a Photo
+                    Post a Profile Photo
                 </Modal.Title>
             </Modal.Header>
 			<Modal.Body id="post-container">
 				<form>
 					<input type="file" accept=".jpg, .jpeg, .png" onChange={handleOnChange} id="file-upload" />
-					<span>Caption: </span><input type="text" onChange={(e) => setCaption(e.target.value)} />
 				</form>
 			</Modal.Body>
             <Modal.Footer>
@@ -53,4 +51,4 @@ const Post = (props) => {
   	);
 };
 
-export default Post;
+export default PostProfilePicture;

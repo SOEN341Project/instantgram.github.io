@@ -10,11 +10,13 @@ import Button from 'react-bootstrap/Button';
 import { HomeIcon, Logo } from '../Icons/Icons';
 
 import Post from '../Post/Post';
+import PostProfilePicture from '../PostProfilePicture/PostProfilePicture';
 import Login from '../Login/Login';
 import Registration from '../Registration/Registration';
 
 const Navigation = (props) => {
   const [postVisibility, setPostVisibility] = React.useState(false);
+  const [postProfileVisibility, setPostProfileVisibility] = React.useState(false);
   const [loginVisibility, setLoginVisibility] = React.useState(false);
   const [registerVisibility, setRegisterVisibility] = React.useState(false);
 
@@ -58,6 +60,7 @@ const Navigation = (props) => {
             <NavDropdown alignRight title={<div id="profile-icon"></div>} id="basic-nav-dropdown">
               {props.user.username ? <NavDropdown.Item href="/">Profile</NavDropdown.Item> : null}
               {props.user.username ? <NavDropdown.Item onClick={() => setPostVisibility(true)}>Post</NavDropdown.Item> : null}
+              {props.user.username ? <NavDropdown.Item onClick={() => setPostProfileVisibility(true)}>Profile Picture</NavDropdown.Item> : null}
               {props.user.username ? <NavDropdown.Divider /> : null}
               {props.user.username ? null : <NavDropdown.Item onClick={() => setLoginVisibility(true)}>Login</NavDropdown.Item>}
               {props.user.username ? null : <NavDropdown.Item onClick={() => setRegisterVisibility(true)}>Register</NavDropdown.Item>}
@@ -69,6 +72,11 @@ const Navigation = (props) => {
         user={props.user}
         show={postVisibility}
         onHide={() => setPostVisibility(false)}
+      />
+      <PostProfilePicture
+        user={props.user}
+        show={postProfileVisibility}
+        onHide={() => setPostProfileVisibility(false)}
       />
       <Login
         show={loginVisibility}
