@@ -27,11 +27,12 @@ const ProfileDetails = (props) => {
       console.log("Searched user is: " + currentUser);
 
     return (
-        <div id = "container">
-            <div id = "profile-header">
+        <div id="container">
+            <div id="profile-header">
+                <div id="profile-picture">{props.user.username ? <img rounded src={props.profilePic} id="profile-image"/> : null}</div>
                 <h2 id="profile-username">{props.user.username || "Login to use Instantgram."}</h2>
                 {props.user.username ?
-                    <form>
+                <form>
                     <input type="text" placeholder="Follow a user..." id="search-bar" onChange={(e) => setSearchQuery(e.target.value)} />
                     <button id="search-but" onClick={handleSearch}>Follow</button>
                 </form>

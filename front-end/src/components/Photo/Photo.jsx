@@ -28,6 +28,8 @@ function Photo(props){
       </Modal.Header>
       <Modal.Body id="photo-body">
         <Image id="mainImage" src={props.source} fluid />
+        <br /><br />
+        <p>{props.caption}</p>
       </Modal.Body>
       <Modal.Footer id="footer">
         {/*<a id="heart-icon" href={"/pictureLiked"}>

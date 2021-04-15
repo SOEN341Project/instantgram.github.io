@@ -1,3 +1,13 @@
 #container-1 {
-    margin-left: 20px;
+    max-width: 925px;
+    margin: 0 auto;
+}
+
+#following {
+    float: left;
+    margin-right: 100px;
+}
+
+#followers {
+    float: left;
 }
