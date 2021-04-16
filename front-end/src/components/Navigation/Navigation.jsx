@@ -52,8 +52,8 @@ const Navigation = (props) => {
         <Navbar.Brand href="/"><Logo /></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Form className="m-auto" inline >
-            <FormControl type="text" placeholder="Search" className="mr-sm-2" id="search-bar" disabled={!props.user.username} onChange={(e) => setSearchQuery(e.target.value)} />
-            <Button id="search-button" variant="outline-success" onClick={handleSearch} >Go</Button>
+            {/*<FormControl type="text" placeholder="Search" className="mr-sm-2" id="search-bar" disabled={!props.user.username} onChange={(e) => setSearchQuery(e.target.value)} />
+            <Button id="search-button" variant="outline-success" onClick={handleSearch}>Go</Button>*/}
           </Form>
           <Nav>
           {props.user.username ? <Nav.Link href="/"><HomeIcon /></Nav.Link> : null}

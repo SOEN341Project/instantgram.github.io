@@ -6,14 +6,13 @@ import Navigation from './components/Navigation/Navigation';
 import ProfileDetails from './components/ProfileDetails/ProfileDetails';
 import PhotoGallery from './components/PhotoGallery/PhotoGallery';
 import FollowerDisplay from './components/FollowerDisplay/FollowerDisplay';
-//import OtherUserProfile
 
 function App() {
   const url = 'http://localhost:9000/profile/';
   const [username, setUsername] = React.useState(null);
   const [userID, setUserID] = React.useState(null);
   const [allUsers, setAllUsers] = React.useState([]);
-  const [profilePic, setProfilePic] = React.useState([]);
+  const [profilePic, setProfilePic] = React.useState(null);
 
   React.useEffect(() => {
     getUserInfo();
