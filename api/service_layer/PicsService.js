@@ -10,6 +10,18 @@ class PicsService {
         this.picsDAO=picsDAO
     }
 
+    //Universal method that deletes any picture in the database.
+    deletePic = async function(picsDTO){
+        console.log('***********in service***************');
+        const picId=picsDTO.picId;
+        try{
+            await picsDAO.deleteOne({"_id" : picId});
+            return {message : 'picture erased', code: 200}
+        }catch(e){
+            return {message : e.message, code: 401}
+        }
+    }
+
     leaveComment = async function(picsDTO){
         console.log('***********in service***************');
         const picId=picsDTO.picId;
@@ -96,9 +108,14 @@ class PicsService {
     getPic = async function(userId,...isProfilePic){
         console.log('***********in service***************');
         var foundPic= null;
-        if(isProfilePic==null||isProfilePic==false) foundPic= await picsDAO.find({'userId':userId});
-        else foundPic= await picsDAO.find({'userId':userId, profilePic:true});
-        return foundPic ;  
+        try{
+            if(isProfilePic==null||isProfilePic==false) foundPic= await picsDAO.find({'userId':userId});
+            else foundPic= await picsDAO.find({'userId':userId, profilePic:true});
+            return foundPic ;  
+        }catch(e){
+            return{message: e.message};
+        }
+
         /*
         if(!foundPic[0])
             return {message: 'Thiw user has no pictures'};       
@@ -107,6 +124,7 @@ class PicsService {
         }
 */
     }
+
     
 }
 
