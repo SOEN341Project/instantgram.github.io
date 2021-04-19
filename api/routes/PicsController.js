@@ -14,6 +14,16 @@ const upload = multer({
   dest: 'images'
   }); 
   */
+
+
+  router.post('/delete',async (req, res, next)=>{
+    console.log('***********in controler*************');
+    console.log(req.body);
+    const picsDTO = req.body;
+    const picsService = new PicsService();
+    const {message, code}= await picsService.deletePic(picsDTO);
+    res.status(code).send(message);
+});
  
 
 router.post('/comment',async (req, res, next)=>{
