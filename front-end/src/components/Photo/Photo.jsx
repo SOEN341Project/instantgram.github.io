@@ -1,7 +1,9 @@
 import React from 'react';
 import Modal from 'react-bootstrap/Modal';
-import Image from 'react-bootstrap/Image'
-import './Photo.css'
+import Image from 'react-bootstrap/Image';
+import Button from 'react-bootstrap/Button';
+import axios from 'axios';
+import './Photo.css';
 import { HeartIcon, ActiveHeartIcon } from '../Icons/Icons';
 import Comments from './Comments';
 
@@ -17,8 +19,19 @@ function Photo(props){
   //let commentText = comments.map(commentObject => commentObject.comment.text);
   //let commentFrom = comments.map(commentObject => commentObject.comment.from);
 
+  const submitForm = () => {
+		axios.post("http://localhost:9000/postpic/delete/", {"picId": photoID})
+		.then((response) => {
+			console.log(response);
+      console.log("photoid: " + photoID);
+		})
+		.catch((error) => {
+			console.log(`Error: ${error}`);
+		});
+	};
 
-  console.log("photoid: "+photoID);
+  console.log("photoid: " + photoID);
+  
   return(
     <Modal {...props} size="md" aria-labelledby="contained-modal-title-vcenter" backdrop="static" keyboard={false} centered>
       <Modal.Header closeButton >
@@ -30,6 +43,7 @@ function Photo(props){
         <Image id="mainImage" src={props.source} fluid />
         <br /><br />
         <p>{props.caption}</p>
+        <Button variant="primary" id="deleteButton" onClick={submitForm}>Delete Photo</Button>
       </Modal.Body>
       <Modal.Footer id="footer">
         {/*<a id="heart-icon" href={"/pictureLiked"}>
