@@ -1,0 +1,92 @@
+Id,Name,Shape Library,Page ID,Contained By,Group,Line Source,Line Destination,Source Arrow,Destination Arrow,Text Area 1,Text Area 2,Text Area 3
+1,Page,,,,,,,,,UML Class,,
+2,Text,Standard,1,,56,,,,,api UML ,,
+3,Text,Standard,1,,56,,,,,"b   |  April 23, 2021",,
+4,Class,UML,1,,,,,,,"<<external>>
+multer",,
+5,Class,UML,1,,,,,,,"<<external>>
+mongoose.Schema",,
+6,Class,UML,1,,,,,,,PicsService,"""-PicsDAO picsDAO;""","savePic(JSON : picsDTO)
+getPic(JSON : picsDTO)
+deletePic(JSON : picsDTO)
+leaveComment(JSON : picsDTO)"
+7,Class,UML,1,,,,,,,PicsDAO,"""-Schema picSchema""",
+8,Class,UML,1,,,,,,,PicsContoller,"""-PicsService picsService;
+""","router.post()
+router.get()"
+9,Class,UML,1,,,,,,,"<<external>>
+express-validator",,
+10,Class,UML,1,,,,,,,"<<external>>
+mongoose.Schema",,
+11,Class,UML,1,,,,,,,FollowService,"""-UsersDAO usersDAO;
+-FollowDAO followDAO;""","checkUserExist(String : username)
+checkUserInFollow(String : username)
+addToDB(String : username)
+addFollower(Stirng : usernameFollower, String : username)
+followUser(Stirng : usernameToFollow, String : username)
+checkFollowing(String : username)
+checkDuplicateFollow(String : username, String : user)
+checkDuplicateFollower(String : username, String : user)
+unfollowUser(String : username, String : user)
+removeFollower(String : username, String : user)"
+12,Class,UML,1,,,,,,,UsersDAO,"""-Schema userSchema """,
+13,Class,UML,1,,,,,,,Follow,"""- FollowService followService;
+""","router.post()
+router.get()"
+14,Class,UML,1,,,,,,,Following,"""- FollowService followService;
+""",router.get()
+15,Class,UML,1,,,,,,,"<<external>>
+mongoose.Schema",,
+16,Class,UML,1,,,,,,,RegistrationService,"""-UsersDAO usersDAO;""",registerUser(JSON : regDTO)
+17,Class,UML,1,,,,,,,RegistationController,"""-RegistrationService registrationService;
+""","router.post()
+router.get()"
+18,Class,UML,1,,,,,,,"<<external>>
+express-validator",,
+19,Class,UML,1,,,,,,,FollowDAO,"""-Schema followSchema """,
+20,Class,UML,1,,,,,,,"<<external>>
+mongoose.Schema",,
+21,Class,UML,1,,,,,,,LoginService,"""-UsersDAO usersDAO;""",findUser(JSON : loginDTO)
+22,Class,UML,1,,,,,,,LoginController,"""-LoginService loginService;
+""","router.post()
+router.get()"
+23,Class,UML,1,,,,,,,UsersDAO,"""-Schema userSchema """,
+24,Class,UML,1,,,,,,,UsersDAO,"""-Schema userSchema """,
+25,Class,UML,1,,,,,,,LogoutController,,router.post()
+26,Class,UML,1,,,,,,,Unfollow,"""- FollowService followService;
+""","router.post()
+router.get()"
+27,Class,UML,1,,,,,,,"<<external>>
+mongoose.Schema",,
+28,Class,UML,1,,,,,,,ProfileService,"""-UsersDAO usersDAO;""","getUser(String : username)
+getAllUsers(String : username)"
+29,Class,UML,1,,,,,,,Profile,"""-ProfileService profileService;
+""","router.post()
+router.get()"
+30,Class,UML,1,,,,,,,UsersDAO,"""-Schema userSchema """,
+31,Line,,1,,56,,2,None,None,,,
+32,Line,,1,,,8,6,None,Open Arrow,directsRequestTo,,
+33,Line,,1,,,7,6,None,Open Arrow,dataMapper,providesDatabaseAcessTo,
+34,Line,,1,,,8,4,None,Open Arrow,uses,,
+35,Line,,1,,,7,5,None,Open Arrow,uses,,
+36,Line,,1,,,13,11,None,Open Arrow,directsRequestTo,,
+37,Line,,1,,,12,11,None,Open Arrow,dataMapper,providesDatabaseAcessTo,
+38,Line,,1,,,12,10,None,Open Arrow,uses,,
+39,Line,,1,,,13,9,None,Open Arrow,uses,,
+40,Line,,1,,,14,11,None,Open Arrow,directsRequestTo,,
+41,Line,,1,,,14,9,None,Open Arrow,uses,,
+42,Line,,1,,,17,16,None,Open Arrow,directsRequestTo,,
+43,Line,,1,,,24,16,None,Open Arrow,dataMapper,providesDatabaseAcessTo,
+44,Line,,1,,,24,15,None,Open Arrow,uses,,
+45,Line,,1,,,17,18,None,Open Arrow,uses,,
+46,Line,,1,,,19,10,None,Open Arrow,uses,,
+47,Line,,1,,,19,11,None,Open Arrow,dataMapper,providesDatabaseAcessTo,
+48,Line,,1,,,22,21,None,Open Arrow,directsRequestTo,,
+49,Line,,1,,,23,21,None,Open Arrow,dataMapper,providesDatabaseAcessTo,
+50,Line,,1,,,23,20,None,Open Arrow,uses,,
+51,Line,,1,,,26,9,None,Open Arrow,uses,,
+52,Line,,1,,,26,11,None,Open Arrow,directsRequestTo,,
+53,Line,,1,,,29,28,None,Open Arrow,directsRequestTo,,
+54,Line,,1,,,30,28,None,Open Arrow,dataMapper,providesDatabaseAcessTo,
+55,Line,,1,,,30,27,None,Open Arrow,uses,,
+56,Group 1,,1,,,,,,,,,
